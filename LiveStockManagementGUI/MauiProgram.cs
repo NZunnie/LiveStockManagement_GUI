@@ -13,6 +13,7 @@ namespace LiveStockManagementGUI
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    Console.WriteLine("test");
                 });
 
 #if DEBUG
