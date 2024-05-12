@@ -13,7 +13,7 @@ public class Database
         if (!File.Exists(dbPath))
         {
             //open the db file
-            using Stream stream = Current.OpenAppPackageFileAsync(dbPath).Result;
+            using Stream stream = Current.OpenAppPackageFileAsync(dbName).Result;
             using MemoryStream memoryStream = new();
             stream.CopyTo(memoryStream);
             //write db data to app directory
@@ -31,7 +31,7 @@ public class Database
         livestock.AddRange(lst2);
         return livestock;
     }
-    public int InsertItem(Livestock item) //insert super class "Store" , insert Restaurant or Salon
+    public int InsertItem(Livestock item) //insert super class "Livestock" , insert Cow or Sheep
     {
         return _connection.Insert(item);
     }

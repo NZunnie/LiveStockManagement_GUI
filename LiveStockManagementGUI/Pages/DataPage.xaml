@@ -5,10 +5,27 @@
              xmlns:viewmodels="clr-namespace:LiveStockManagementGUI.ViewModels"
              x:Class="LiveStockManagementGUI.Pages.DataPage"
              Title="DataPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Border Margin ="40,40" 
+            BackgroundColor="Gray" 
+            StrokeShape="RoundRectangle 10">
+        <CollectionView 
+            BackgroundColor="LightGray"
+            ItemsSource="{Binding Livestocks,Source={viewmodels:MainViewModel}}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="White" StrokeShape="RoundRectangle 10">
+                        <Grid ColumnDefinitions="*,*,*,*,*,*">
+                            <Label Grid.Column="0" Text="{Binding Id}"/>
+                            <Label Grid.Column="1" Text="{Binding Name}"/>
+                            <Label Grid.Column="2" Text="{Binding Colour}"/>
+                            <Label Grid.Column="3" Text="{Binding Milk}"/>
+                            <Label Grid.Column="4" Text="{Binding Weight}"/>
+                            <Label Grid.Column="5" Text="{Binding Cost}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            </CollectionView>
+
+    </Border>
 </ContentPage>

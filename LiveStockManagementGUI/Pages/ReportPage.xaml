@@ -3,10 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.ReportPage"
              Title="ReportPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid Margin="0,30" ColumnDefinitions="*,*" ColumnSpacing="20" HorizontalOptions="Center"
+          RowDefinitions="*,*" RowSpacing="20" VerticalOptions="Center">
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="HeightRequest" Value="100"/>
+                <Setter Property="WidthRequest" Value="300"/>
+            </Style>
+        </Grid.Resources>
+        <Label x:Name="GenStatsLabel" 
+               Grid.Row ="0" 
+               Grid.ColumnSpan="2"
+               BackgroundColor="AntiqueWhite" 
+               Text="General stats here...."/>
+        <Picker x:Name="LivestockPicker"
+                Title="Select Livestock type" 
+                Grid.Row="1" Grid.Column="0"
+                BackgroundColor="LightBlue"
+                HorizontalOptions="Start" 
+                TitleColor="Blue"
+                WidthRequest="300" 
+                SelectedIndexChanged="OnLivestockTypeSelectionChange">
+        </Picker>
+        <Label x:Name="ResultLabel" 
+               Grid.Row ="1" Grid.Column="1"
+               BackgroundColor="LightBlue" 
+               Text="Results...."/>
+    </Grid>
 </ContentPage>

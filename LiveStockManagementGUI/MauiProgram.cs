@@ -20,7 +20,7 @@ namespace LiveStockManagementGUI
     		builder.Logging.AddDebug();
 #endif
 
-            //register the following services
+            //register the following services to make them available for the app
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddTransient<DataPage>();
             builder.Services.AddTransient<ReportPage>();
