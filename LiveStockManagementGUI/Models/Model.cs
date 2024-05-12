@@ -10,11 +10,12 @@ public class Livestock
 
     public double Weight { get; set; }
     public double Cost { get; set; }
+    public double Wool { get; set; } //Added this one here
     public override string ToString() // used if there is instance of Livestock class 
     {
         //GetType().Name : either Cow or  Sheep
         
-        return $"{this.GetType().Name,-15} {this.Id,-10}{this.Colour,-10} {this.Milk,-10} {this.Weight,-10} {this.Cost,-10}";
+        return $"{this.GetType().Name,-15} {this.Id,-10}{this.Colour,-10} {this.Milk,-10} {this.Weight,-10} {this.Cost,-10}{this.Wool,-10}";
     }
 }
     [Table("Cow")] //Cow from the data table, feature fo mapped, table name

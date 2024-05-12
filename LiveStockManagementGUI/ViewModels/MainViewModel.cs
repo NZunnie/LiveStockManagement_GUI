@@ -21,7 +21,7 @@ public class MainViewModel
     {
         List<Livestock> sts = Livestocks.Where(x => x.GetType().Name.Equals(type)).ToList();
         string results = $"{$"Number of {type}:",-30}{sts.Count}\n"; // first line of result
-        results += $"{"Average weight of livestocks:",-30}{sts.Average(x => x.Weight)}";
+        results += $"{"Average weight of livestock:",-30}{sts.Average(x => x.Weight)}";
         return results;
     }
 
