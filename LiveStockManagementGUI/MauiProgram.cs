@@ -20,6 +20,12 @@ namespace LiveStockManagementGUI
     		builder.Logging.AddDebug();
 #endif
 
+            //register the following services
+            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddTransient<DataPage>();
+            builder.Services.AddTransient<ReportPage>();
+            builder.Services.AddTransient<SearchPage>();
+            builder.Services.AddTransient<ManagementPage>();
             return builder.Build();
         }
     }
