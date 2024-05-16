@@ -6,14 +6,14 @@
              x:Class="LiveStockManagementGUI.Pages.DataPage"
              Title="DataPage">
     <Border Margin ="40,40" 
-            BackgroundColor="Gray" 
-            StrokeShape="RoundRectangle 10">
+            BackgroundColor="white" 
+            StrokeShape="Rectangle 10">
         <CollectionView 
             BackgroundColor="LightGray"
             ItemsSource="{Binding Livestocks,Source={viewmodels:MainViewModel}}" >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border BackgroundColor="White" StrokeShape="RoundRectangle 10">
+                    <Border BackgroundColor="White" StrokeShape="Rectangle 10">
                         <Grid ColumnDefinitions="*,*,*,*,*,*,*">
                             <Label Grid.Column="0" Text="{Binding Id}"/>
                             <Label Grid.Column="1" Text="{Binding Name}"/>
