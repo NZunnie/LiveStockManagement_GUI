@@ -9,6 +9,7 @@ public partial class ReportPage : ContentPage
 		this.vm = vm;
 		LivestockPicker.ItemsSource = new string[] { "Cow", "Sheep" };
 		GenStatsLabel.Text = vm.GetGeneralStats();
+		MonthTax.Text = vm.MonthlyTax();
 	}
 
     private void OnLivestockTypeSelectionChange(object sender, EventArgs e)

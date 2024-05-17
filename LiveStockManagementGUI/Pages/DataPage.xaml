@@ -9,7 +9,7 @@
             BackgroundColor="Gray" 
             StrokeShape="RoundRectangle 10">
         <CollectionView 
-            BackgroundColor="LightGray"
+            BackgroundColor= "LightGray"
             ItemsSource="{Binding Livestocks,Source={viewmodels:MainViewModel}}" >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
