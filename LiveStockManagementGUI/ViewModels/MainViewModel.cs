@@ -28,6 +28,7 @@ public class MainViewModel
     public string MonthlyTax()
     {
         return $"30 days govt tax: ${Livestocks.Sum(x => x.Weight * GovernmentTax * 30):F2}";
+        //return $"${Livestocks.Sum(x => x.Weight * GovernmentTax * 30):F2}";
     }
     public string DailyProfit()
     {
@@ -42,13 +43,13 @@ public class MainViewModel
     public string TotalCowProfit()
     {
         double totalCowProfit = Livestocks.Where(x => x is Cow).Sum(CalculateDailyProfit);
-        return $"Current daily profit of all cows: ${totalCowProfit:F2}";
+        return $"Current daily profit of all cows: \n${totalCowProfit:F2}";
     }
 
     public string TotalSheepProfit()
     {
         double totalSheepProfit = Livestocks.Where(x => x is Sheep).Sum(CalculateDailyProfit);
-        return $"Current daily profit of all sheep: ${totalSheepProfit:F2}";
+        return $"Current daily profit of all sheep: \n${totalSheepProfit:F2}";
     }
     //Based on current livestock data
     public string AveCowProfit()
@@ -56,7 +57,7 @@ public class MainViewModel
         int totalCowCount = Livestocks.Count(x => x is Cow);
         double totalCowProfit = Livestocks.Where(x => x is Cow).Sum(CalculateDailyProfit);
         double averageCowProfit = totalCowCount > 0 ? totalCowProfit / totalCowCount : 0;
-        return $"On average, a single cow makes daily profit: ${averageCowProfit:F2}";
+        return $"On average, a single cow makes daily profit: \n${averageCowProfit:F2}";
     }
 
     public string AveSheepProfit()
@@ -64,7 +65,7 @@ public class MainViewModel
         int totalSheepCount = Livestocks.Count(x => x is Sheep);
         double totalSheepProfit = Livestocks.Where(x => x is Sheep).Sum(CalculateDailyProfit);
         double averageSheepProfit = totalSheepCount > 0 ? totalSheepProfit / totalSheepCount : 0;
-        return $"On average, a single sheep makes daily profit: ${averageSheepProfit:F2}";
+        return $"On average, a single sheep makes daily profit: \n${averageSheepProfit:F2}";
     }
 
     private double CalculateDailyProfit(Livestock livestock)
@@ -110,10 +111,11 @@ public class MainViewModel
         }
 
         return $"Buying {quantity} {type}s would bring in estimated daily profit: ${estimatedDailyProfit:F2}";
-    }
-    #endregion
 
-    public string QueryByLivestockType(string type)
+    }
+        #endregion
+
+        public string QueryByLivestockType(string type)
     {
         List<Livestock> sts = Livestocks.Where(x => x.GetType().Name.Equals(type)).ToList();
         string results = $"{$"Number of {type}:",-30}{sts.Count}\n"; // first line of result

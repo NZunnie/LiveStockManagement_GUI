@@ -4,37 +4,99 @@
              x:Class="LiveStockManagementGUI.Pages.ReportPage"
              Title="ReportPage">
     <Grid Margin="0,30" ColumnDefinitions="*,*,*" ColumnSpacing="20" HorizontalOptions="Center"
-          RowDefinitions="*,*" RowSpacing="20" VerticalOptions="Center">
+          RowDefinitions="*,*" RowSpacing="20" VerticalOptions="Center" BackgroundColor= "#add7b1">
+        
         <Grid.Resources>
             <Style TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="HeightRequest" Value="100"/>
-                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="15, 5"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="15, 5"/>
             </Style>
         </Grid.Resources>
-        <Label x:Name="GenStatsLabel" 
-               Grid.Row ="0" 
-               Grid.ColumnSpan="2"
-               BackgroundColor="AntiqueWhite" 
-               Text="General stats here...."/>
-        <Picker x:Name="LivestockPicker"
-                Title="Select Livestock type" 
-                Grid.Row="1" Grid.Column="0"
-                BackgroundColor="LightBlue"
-                HorizontalOptions="Start" 
-                TitleColor="Blue"
-                WidthRequest="300" 
-                SelectedIndexChanged="OnLivestockTypeSelectionChange">
-        </Picker>
-        <Label x:Name="ResultLabel" 
-               Grid.Row ="1" Grid.Column="1"
-               BackgroundColor="LightBlue" 
-               Text="Results...."/>
-        <Label x:Name="MonthTax" 
-        Grid.Row ="0" 
-        Grid.ColumnSpan="3"
-        BackgroundColor="AntiqueWhite" 
-        Text="General stats here...."/>
-    </Grid>
+
+        <!-- First Cell (Row 0, Column 0): General Statistics -->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <VerticalStackLayout>
+                <Label Text="General Statistics" 
+                       FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                <Label x:Name="MonthTax" Text="{Binding MonthTax}" />
+                <Label x:Name="DayProfit" Text="{Binding DayProfit}" />
+                <Label x:Name="AveAllWeight" Text="{Binding AveAllWeight}" />
+            </VerticalStackLayout>
+        </Grid>
+        <!-- Second Cell (Row 0, Column 1): Image -->
+        <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions ="Center">
+            <VerticalStackLayout>
+                <Label Text="Live Stock Management" 
+                       FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                <Image Source="report_logo.png" HeightRequest="200" WidthRequest="200"/>
+               
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Third Cell (Row 0, Column 2): InvestForecast -->
+        <Grid Grid.Row="0" Grid.Column="2" RowSpan="2">
+            <VerticalStackLayout>
+                <Label Text="Estimate Future Investment" 
+                       FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                <Picker x:Name="LivestockPicker"
+                        Title="Select Livestock type" 
+                        BackgroundColor="AntiqueWhite"
+                        HorizontalOptions="Start" 
+                        TitleColor="#1A4D2E"
+                        WidthRequest="300" 
+                        SelectedIndexChanged="OnLivestockTypeSelectionChange">  
+                </Picker>
+                <Entry x:Name="Quentity" 
+                       Placeholder="Enter the quantity of investment animals:" 
+                       PlaceholderColor="Gray"
+                       BackgroundColor="AntiqueWhite" />
+
+                <Button Clicked="NumberEntryBtn_click"
+                        Text="OK" 
+                        HorizontalOptions="FillAndExpand" />
+                <Label x:Name="EstimateInvestment" 
+                       Text="{Binding EstimateInvestment}" />
+                <Button 
+                    Clicked="ResetClicked" 
+                    Text="Reset" 
+                    HorizontalOptions="FillAndExpand" />
+                <!--<HorizontalStackLayout Margin="20,10" HorizontalOptions="End">
+                    <Image Source="cow.png" HeightRequest="50" WidthRequest="50"/>
+                    <Image Source="sheep.png" HeightRequest="50" WidthRequest="50"/>
+                </HorizontalStackLayout>-->
+                <Image Source="logo_green.png" HeightRequest="100" WidthRequest="200"
+                       HorizontalOptions="End" Margin="10,30" />
+               
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Fourth Cell (Row 1, Column 0): General Statistics -->
+        <Grid Grid.Row="1" Grid.Column="0" ColumnSpan="2">
+            <VerticalStackLayout>
+                <Label Text="Current Livestock Statistics" 
+               FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                <HorizontalStackLayout  >
+                    <VerticalStackLayout>
+                        <Label x:Name="TotalCow" Text="{Binding TotalCow}" />
+                        <Label x:Name="AveCow" Text="{Binding AveCow}" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout>
+                        <Label x:Name="TotalSheep" Text="{Binding TotalSheep}" />
+                        <Label x:Name="AveSheep" Text="{Binding AveSheep}" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+
+
+        
+
+</Grid>
 </ContentPage>
