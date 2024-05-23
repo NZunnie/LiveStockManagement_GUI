@@ -73,7 +73,7 @@ public class MainViewModel
         double income = livestock switch
         {
             Cow cow => cow.Milk * CowMilkPrice,
-            Sheep sheep => sheep.Wool * SheepWoolPrice,
+            Sheep sheep => sheep.Milk * SheepWoolPrice,
             _ => 0 //default
         };
 
@@ -99,7 +99,7 @@ public class MainViewModel
         }
         else if (type.ToLower() == "sheep")
         {
-            double totalSheepWool = Livestocks.OfType<Sheep>().Sum(x => x.Wool);
+            double totalSheepWool = Livestocks.OfType<Sheep>().Sum(x => x.Milk);
             double totalSheepProfit = totalSheepWool * SheepWoolPrice;
             int sheepCount = Livestocks.OfType<Sheep>().Count();
             double averageSheepProfit = sheepCount > 0 ? totalSheepProfit / sheepCount : 0;

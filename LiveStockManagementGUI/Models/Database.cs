@@ -24,20 +24,21 @@ public class Database
     }
     public List<Livestock> ReadItems()
     {
-        var livestock = new List<Livestock>();
+        var livestocks = new List<Livestock>();
         var lst1 = _connection.Table<Cow>().ToList();
-        livestock.AddRange(lst1);
+        livestocks.AddRange(lst1);
         var lst2 = _connection.Table<Sheep>().ToList();
-        livestock.AddRange(lst2);
-        return livestock;
+        livestocks.AddRange(lst2);
+        return livestocks;
     }
     public int InsertItem(Livestock item) //insert super class "Livestock" , insert Cow or Sheep
     {
+
         return _connection.Insert(item);
     }
-    public int DeleteItem(Livestock item)
+    public int DeleteItem(int livestockId)
     {
-        return _connection.Delete(item);
+        return _connection.Delete(livestockId);
     }
     public int UpdateItem(Livestock item)
     {

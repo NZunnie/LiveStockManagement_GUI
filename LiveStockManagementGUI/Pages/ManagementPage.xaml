@@ -3,10 +3,79 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.ManagementPage"
              Title="ManagementPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+
+    <VerticalStackLayout
+           Margin="0,30" 
+           MaximumWidthRequest="500" 
+           Spacing="10">
+        <Picker x:Name="LivestockPicker"
+           Title="Select Insert/Update/Delete function" 
+           Grid.Row="1" Grid.Column="0"
+           BackgroundColor="#add7b1"
+           HorizontalOptions="Start" 
+           TitleColor="#1A4D2E"
+           WidthRequest="300" 
+           SelectedIndexChanged="OnLivestockTypeSelectionChange">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Insert</x:String>
+                    <x:String>Update</x:String>
+                    <x:String>Delete</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <!--<Grid ColumnDefinitions="2*,1*" ColumnSpacing="10">
+            <Entry x:Name="LivestockType" 
+             Grid.Row="1" 
+             Placeholder="Enter Livestock Type(Cow/Sheep)"/>
+        </Grid>
+        <Grid  Grid.Row="2" 
+         ColumnDefinitions="2*,1*"
+         ColumnSpacing="10">
+            <Entry x:Name="Cost " Placeholder="Enter Livestock Cost"/>
+        </Grid>
+        
+        <Grid  Grid.Row="2" 
+         ColumnDefinitions="2*,1*"
+         ColumnSpacing="10">
+            <Entry x:Name="Weight " Placeholder="Enter Livestock Weight"/>
+            </Grid>
+        
+        <Grid  Grid.Row="2" 
+        ColumnDefinitions="2*,1*"
+        ColumnSpacing="10">
+            <Entry x:Name="Colour " Placeholder="Enter Livestock Colour(black/Red/White)"/>
+            <Button Grid.Column="1"
+         Clicked="LivestockBtn_click" 
+         Text="Ok"/>
+        </Grid>-->
+        <StackLayout x:Name="InsertLayout" IsVisible="False" Spacing="10">
+            <Entry x:Name="LivestockType" Placeholder="Enter Livestock Type (Cow/Sheep)"/>
+            <Entry x:Name="Cost" Placeholder="Enter Livestock Cost"/>
+            <Entry x:Name="Weight" Placeholder="Enter Livestock Weight"/>
+            <Entry x:Name="Colour" Placeholder="Enter Livestock Colour (black/Red/White)"/>
+            <Entry x:Name="Milk" Placeholder="Enter Milk Production"/>
+            <Button Text="Insert" Clicked="InsertBtn_Click"/>
+        </StackLayout>
+        
+        <!--<StackLayout x:Name="UpdateLayout" IsVisible="False" Spacing="10">
+            <Entry x:Name="LivestockId" Placeholder="Enter Livestock Id"/>
+            <Entry x:Name="Cost" Placeholder="Enter Livestock Cost"/>
+            <Entry x:Name="Weight" Placeholder="Enter Livestock Weight"/>
+            <Entry x:Name="Colour" Placeholder="Enter Livestock Colour (black/Red/White)"/>
+            <Entry x:Name="Milk" Placeholder="Enter Milk Production"/>
+            <Button Text="Update" Clicked="UpdateBtn_Click"/>
+        </StackLayout>-->
+
+        <StackLayout x:Name="DeleteLayout" IsVisible="False" Spacing="10">
+            <Entry x:Name="DeleteLivestockId" Placeholder="Enter Livestock ID to Delete"/>
+            <Button Text="Delete" Clicked="DeleteBtn_Click"/>
+        </StackLayout>
+        <Grid>
+            <Button Grid.Column="2" 
+              Clicked="ResetBtn_click" 
+              Text="Reset"/>
+        </Grid>
+        
     </VerticalStackLayout>
 </ContentPage>
