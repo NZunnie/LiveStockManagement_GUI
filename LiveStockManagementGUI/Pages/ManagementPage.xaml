@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.ManagementPage"
              Title="ManagementPage">
-
-    <VerticalStackLayout
+    
+        <VerticalStackLayout
            Margin="0,30" 
-           MaximumWidthRequest="500" 
-           Spacing="10">
+           MaximumWidthRequest="300" 
+           Spacing="20">
         <Picker x:Name="LivestockPicker"
            Title="Select Insert/Update/Delete function" 
            Grid.Row="1" Grid.Column="0"
@@ -49,12 +49,30 @@
          Clicked="LivestockBtn_click" 
          Text="Ok"/>
         </Grid>-->
-        <StackLayout x:Name="InsertLayout" IsVisible="False" Spacing="10">
-            <Entry x:Name="LivestockType" Placeholder="Enter Livestock Type (Cow/Sheep)"/>
-            <Entry x:Name="Cost" Placeholder="Enter Livestock Cost"/>
-            <Entry x:Name="Weight" Placeholder="Enter Livestock Weight"/>
-            <Entry x:Name="Colour" Placeholder="Enter Livestock Colour (black/Red/White)"/>
-            <Entry x:Name="Milk" Placeholder="Enter Milk Production"/>
+            <StackLayout x:Name="InsertLayout" IsVisible="False" Spacing="10">
+                <Picker x:Name="LivestockType" Title="Select Livestock Type (Cow/Sheep)"  BackgroundColor="#add7b1" WidthRequest="300">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Cow</x:String>
+                        <x:String>Sheep</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Entry x:Name="Cost" Placeholder="Enter Livestock Cost" WidthRequest="300" BackgroundColor="AntiqueWhite"/>
+            <Entry x:Name="Weight" Placeholder="Enter Livestock Weight" BackgroundColor="AntiqueWhite"/>
+                <Picker x:Name="LivestockColour" 
+                        Title="Select Livestock Colour (Black/Red/White)" 
+                        BackgroundColor="#add7b1"
+                        WidthRequest="300">
+                 <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Black</x:String>
+                        <x:String>Red</x:String>
+                        <x:String>White</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Entry x:Name="Milk" Placeholder="Enter Milk Production" BackgroundColor="AntiqueWhite"/>
             <Button Text="Insert" Clicked="InsertBtn_Click"/>
         </StackLayout>
         
@@ -78,4 +96,5 @@
         </Grid>
         
     </VerticalStackLayout>
+              
 </ContentPage>

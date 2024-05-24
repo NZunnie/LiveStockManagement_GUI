@@ -61,13 +61,13 @@ namespace LiveStockManagementGUI.Pages
         private void InsertBtn_Click(object sender, EventArgs e)
         {
             // Implement the logic for inserting a livestock record
-            string type = LivestockType.Text;
-            string colour = Colour.Text;
+            string type = LivestockType.SelectedItem?.ToString();
+            string colour = LivestockColour.SelectedItem?.ToString();
             var livestock = new Livestock();
             if (double.TryParse(Cost.Text, out double cost) &&
                 double.TryParse(Weight.Text, out double weight) &&
-                double.TryParse(Milk.Text, out double milk)) 
-                //double.TryParse(Wool.Text, out double wool))
+                double.TryParse(Milk.Text, out double milk))
+               // double.TryParse(Wool.Text, out double wool))
             { 
                 if (type == "Cow")
                 {
@@ -149,36 +149,37 @@ namespace LiveStockManagementGUI.Pages
         //        DisplayAlert("Invalid Input", "Please enter valid numbers for cost, weight, and milk", "OK");
         //    }
         //}
+
         private void DeleteBtn_Click(object sender, EventArgs e)
-        {
-            // Implement the logic for deleting a livestock record
+        {   
+           // Implement the logic for deleting a livestock record
             if (int.TryParse(DeleteLivestockId.Text, out int livestockId))
-            {
-                var deleted = _database.DeleteItem(livestockId);
-                if (deleted > 0)
                 {
-                    DisplayAlert("Success", "Record deleted successfully", "OK");
-                    var itemToRemove = _livestock.FirstOrDefault(l => l.Id == livestockId);
-                    if (itemToRemove != null)
+                    var deleted = _database.DeleteItem(livestockId);
+                    if (deleted > 0)
                     {
-                        _livestock.Remove(itemToRemove);
+                        DisplayAlert("Success", "Record deleted successfully", "OK");
+                        var itemToRemove = _livestock.FirstOrDefault(l => l.Id == livestockId);
+                        if (itemToRemove != null)
+                        {
+                            _livestock.Remove(itemToRemove);
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("Failure", "Failed to delete record", "OK");
                     }
                 }
                 else
                 {
-                    DisplayAlert("Failure", "Failed to delete record", "OK");
+                    DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
                 }
-            }
-            else
-            {
-                DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
-            }
-            //Livestock? livestock = _livestock.FirstOrDefault(l => l.Id == );
+            //var livestock = _connection.Table<Livestock>().FirstOrDefault(l => l.id == livestockId);
             //if (livestock != null)
             //{
-            //    if (_database.DeleteItem(livestockID) > 0)
-            //        _livestock.Remove(livestock);
+            //    return _connection.DeleteItem(livestock);
             //}
+            //return 0;
         }
 
 
@@ -188,10 +189,10 @@ namespace LiveStockManagementGUI.Pages
             //Cost.Text = string.Empty;
 
             //LivestockPicker.SelectedIndex = -1;
-            LivestockType.Text = string.Empty;
+            LivestockType.SelectedIndex = -1;
             Cost.Text = string.Empty;
             Weight.Text = string.Empty;
-            Colour.Text = string.Empty;
+            LivestockColour.SelectedIndex = -1;
             Milk.Text = string.Empty;
             DeleteLivestockId.Text = string.Empty;
             //InsertLayout.IsVisible = false;

@@ -8,18 +8,18 @@
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <Tab Title="Data Listing">
-            <ShellContent Title ="Data Listing" ContentTemplate="{DataTemplate Pages:DataPage}"/>
-        </Tab>
-        <Tab Title="Report">
-            <ShellContent Title ="Report Page" ContentTemplate="{DataTemplate Pages:ReportPage}"/>
-        </Tab>
-        <Tab Title="Search">
-            <ShellContent Title ="Search Page" ContentTemplate="{DataTemplate Pages:SearchPage}"/>
-        </Tab>
-        <Tab Title="Management">
-            <ShellContent Title ="Management Page" ContentTemplate="{DataTemplate Pages:ManagementPage}"/>
-        </Tab>
-    </TabBar>
-
+         <Tab Title="Data Listing">
+             <ShellContent Title ="Data Listing" ContentTemplate="{DataTemplate Pages:DataPage}"/>
+          </Tab>
+          <Tab Title="Report">
+              <ShellContent Title ="Report Page" ContentTemplate="{DataTemplate Pages:ReportPage}"/>
+          </Tab>
+          <Tab Title="Search">
+              <ShellContent Title ="Search Page" ContentTemplate="{DataTemplate Pages:SearchPage}"/>
+          </Tab>
+          <Tab Title="Management">
+             <ShellContent Title ="Management Page" ContentTemplate="{DataTemplate Pages:ManagementPage}"/>
+          </Tab>
+        </TabBar>
+      
 </Shell>
