@@ -14,14 +14,14 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border BackgroundColor= "White" StrokeShape="Rectangle 10">
-                        <Grid ColumnDefinitions="*,*,*,*,*,*,*">
-                            <Label Grid.Column="0" Text="{Binding Id}"/>
+                        <Grid ColumnDefinitions="*,*,*,*,*,*">
                             <Label Grid.Column="1" Text="{Binding Name}"/>
+                            <Label Grid.Column="0" Text="{Binding Id}"/>
                             <Label Grid.Column="2" Text="{Binding Colour}"/>
                             <Label Grid.Column="3" Text="{Binding Milk}"/>
                             <Label Grid.Column="4" Text="{Binding Weight}"/>
                             <Label Grid.Column="5" Text="{Binding Cost}"/>
-                            <Label Grid.Column="6" Text="{Binding Wool}"/>
+                            
                         </Grid>
                     </Border>
                 </DataTemplate>
