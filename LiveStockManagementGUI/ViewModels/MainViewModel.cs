@@ -110,7 +110,7 @@ public class MainViewModel
             return $"Invalid livestock type: {type}";
         }
 
-        return $"Buying {quantity} {type}s would bring in estimated daily profit: ${estimatedDailyProfit:F2}";
+        return $"For {quantity} {type}s \nestimated daily profit: \n${estimatedDailyProfit:F2}";
 
     }
         #endregion

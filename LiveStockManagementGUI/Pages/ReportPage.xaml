@@ -18,6 +18,12 @@
                 <Setter Property="Margin" Value="10"/>
                 <Setter Property="Padding" Value="15, 5"/>
             </Style>
+            <Style TargetType="Picker">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
         </Grid.Resources>
 
         <!-- First Cell (Row 0, Column 0): General Statistics -->
@@ -71,8 +77,8 @@
                     <Image Source="cow.png" HeightRequest="50" WidthRequest="50"/>
                     <Image Source="sheep.png" HeightRequest="50" WidthRequest="50"/>
                 </HorizontalStackLayout>-->
-                <Image Source="logo_green.png" HeightRequest="100" WidthRequest="200"
-                       HorizontalOptions="End" Margin="10,30" />
+                <Image Source="logo_green.png" HeightRequest="70" WidthRequest="200"
+                       HorizontalOptions="End" Margin="5,10" />
                
             </VerticalStackLayout>
         </Grid>
@@ -85,10 +91,10 @@
                 <HorizontalStackLayout  >
                     <VerticalStackLayout>
                         <Label x:Name="TotalCow" Text="{Binding TotalCow}" />
-                        <Label x:Name="AveCow" Text="{Binding AveCow}" />
+                        <Label x:Name="TotalSheep" Text="{Binding TotalSheep}" />
                     </VerticalStackLayout>
                     <VerticalStackLayout>
-                        <Label x:Name="TotalSheep" Text="{Binding TotalSheep}" />
+                        <Label x:Name="AveCow" Text="{Binding AveCow}" />
                         <Label x:Name="AveSheep" Text="{Binding AveSheep}" />
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
