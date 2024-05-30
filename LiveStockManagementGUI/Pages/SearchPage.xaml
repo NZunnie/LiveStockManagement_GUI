@@ -3,10 +3,80 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.SearchPage"
              Title="SearchPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid Margin="0,30" ColumnDefinitions="*,*" ColumnSpacing="20" HorizontalOptions="Center" 
+          RowDefinitions="50,*" RowSpacing="20" VerticalOptions="StartAndExpand" BackgroundColor= "#add7b1">
+
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="15, 5"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="15, 5"/>
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+        </Grid.Resources>
+        <!-- First Cell (Row 0, Column 0): title -->
+        <Grid Grid.Row="0" Column="0" ColumnSpan="2" >
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
+                <Label 
+                    Text="Search Livestock" 
+                    FontSize="22" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
+                
+            </HorizontalStackLayout>
+        </Grid>
+        <!-- Second Cell (Row 1, Column 0): Search -->
+        <Grid Grid.Row="1" Grid.Column="0"  >
+            <VerticalStackLayout>
+                <Label Text="Search"  WidthRequest="400"
+                     FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                <Picker x:Name="LivestockPicker"
+                     Title="Select Livestock type" 
+                     BackgroundColor="AntiqueWhite"
+                     HorizontalOptions="Start" 
+                     TitleColor="#1A4D2E"
+                     WidthRequest="300" 
+                     SelectedIndexChanged="OnLivestockTypeSelectionChange">
+                </Picker>
+                <Picker x:Name="LivestockColourPicker" 
+                    Title="Select Livestock Colour (Black/Red/White/All)" 
+                    BackgroundColor="AntiqueWhite"
+                    HorizontalOptions="Start" 
+                    TitleColor="#1A4D2E"
+                    WidthRequest="300" 
+                    SelectedIndexChanged="OnLivestockTypeSelectionChange">
+                </Picker>
+                <Button Clicked="SearchBtn_click"
+                    Text="OK" 
+                    HorizontalOptions="FillAndExpand" />
+                <Button 
+                    Clicked="ResetClicked" 
+                    Text="Reset" 
+                    HorizontalOptions="FillAndExpand" />
+               
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Third Cell (Row 1, Column 2): Result -->
+        <Grid Grid.Row="1" Grid.Column="1"  >
+            <VerticalStackLayout>
+                <Label Text="Result" WidthRequest="400"
+                FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                <Label x:Name="SearchResult" HeightRequest="200"/>
+                <Image Source="logo_green.png" HeightRequest="100" WidthRequest="220"
+                HorizontalOptions="EndAndExpand" Margin="10" />
+
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
 </ContentPage>
