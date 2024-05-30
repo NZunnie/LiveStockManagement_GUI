@@ -174,12 +174,6 @@ namespace LiveStockManagementGUI.Pages
                 {
                     DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
                 }
-            //var livestock = _connection.Table<Livestock>().FirstOrDefault(l => l.id == livestockId);
-            //if (livestock != null)
-            //{
-            //    return _connection.DeleteItem(livestock);
-            //}
-            //return 0;
         }
 
 
