@@ -14,11 +14,16 @@ namespace LiveStockManagementGUI.Pages
         public ManagementPage(MainViewModel vm)
         {
             InitializeComponent();
+
+
+
             BindingContext = vm;
+
             _database = new Database(); // Initialize  database here
-            _livestock = new ObservableCollection<Livestock>(); // Initialize your livestock collection here
+            _livestock = new ObservableCollection<Livestock>(); // Initialize livestock collection here
             LivestockPicker.ItemsSource = new string[] { "Insert", "Update", "Delete" };
-           
+
+
         }
 
         private void OnLivestockTypeSelectionChange(object sender, EventArgs e)
@@ -42,6 +47,7 @@ namespace LiveStockManagementGUI.Pages
             {
                 DeleteLayout.IsVisible = true;
             }
+
 
         }
 
@@ -67,8 +73,8 @@ namespace LiveStockManagementGUI.Pages
             if (double.TryParse(Cost.Text, out double cost) &&
                 double.TryParse(Weight.Text, out double weight) &&
                 double.TryParse(Milk.Text, out double milk))
-               // double.TryParse(Wool.Text, out double wool))
-            { 
+            // double.TryParse(Wool.Text, out double wool))
+            {
                 if (type == "Cow")
                 {
                     livestock = new Cow
@@ -80,11 +86,11 @@ namespace LiveStockManagementGUI.Pages
                         Milk = milk
 
                     };
-                   
+
                 }
                 else
                 {
-                     livestock = new Sheep
+                    livestock = new Sheep
                     {
                         Name = type,
                         Colour = colour,
@@ -95,13 +101,14 @@ namespace LiveStockManagementGUI.Pages
                     };
 
                 }
-               
+
                 // Insert into the database
                 var inserted = _database.InsertItem(livestock);
                 if (inserted > 0)
                 {
-                    DisplayAlert("Success", "Record added successfully", "OK");
+                    DisplayAlert(type, " New Record is added successfully", "OK");
                     _livestock.Add(livestock);
+
                 }
                 else
                 {
@@ -110,7 +117,7 @@ namespace LiveStockManagementGUI.Pages
             }
             else
             {
-                DisplayAlert("Invalid Input", "Please enter valid numbers for cost, weight, and milk", "OK");
+                DisplayAlert("Invalid Input", "Please Select livestock type and enter valid numbers for cost, weight, and milk", "OK");
             }
         }
         //private void UpdateBtn_Click(object sender, EventArgs e)
@@ -124,7 +131,7 @@ namespace LiveStockManagementGUI.Pages
         //    {
         //        var livestock = new Livestock
         //        {
-                    
+
         //            Colour = colour,
         //            Cost = cost,
         //            Weight = weight,
@@ -151,30 +158,65 @@ namespace LiveStockManagementGUI.Pages
         //}
 
         private void DeleteBtn_Click(object sender, EventArgs e)
-        {   
-           // Implement the logic for deleting a livestock record
+        {
+            // deleting a livestock record
             if (int.TryParse(DeleteLivestockId.Text, out int livestockId))
+            {
+                Livestock itemToRemove = _livestock.FirstOrDefault(l => l.Id == livestockId);
+                
+
+                if (itemToRemove == null)
                 {
-                    var deleted = _database.DeleteItem(livestockId);
-                    if (deleted > 0)
-                    {
-                        DisplayAlert("Success", "Record deleted successfully", "OK");
-                        var itemToRemove = _livestock.FirstOrDefault(l => l.Id == livestockId);
-                        if (itemToRemove != null)
-                        {
-                            _livestock.Remove(itemToRemove);
-                        }
-                    }
-                    else
-                    {
-                        DisplayAlert("Failure", "Failed to delete record", "OK");
-                    }
+                    DisplayAlert("Failure", $"record to delete is null: -{livestockId}-", "OK");
+                    return;
+                }
+                
+                
+            
+                var deleted = _database.DeleteItem(itemToRemove);
+                if (deleted > 0)
+                {
+                    DisplayAlert("Success", "Record deleted successfully", "OK");
+
+                    _livestock.Remove(itemToRemove);
+
                 }
                 else
                 {
-                    DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
+                    DisplayAlert("Failure", "Failed to delete record", "OK");
                 }
+            }
+            else
+            {
+                DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
+            }
         }
+        //private void DeleteBtn_Click(object sender, EventArgs e)
+        //{
+        //    // deleting a livestock record
+        //    if (int.TryParse(DeleteLivestockId.Text, out int livestockId))
+        //    {
+        //        var deleted = _database.DeleteItem(livestockId);
+        //        if (deleted > 0)
+        //        {
+        //            DisplayAlert("Success", "Record deleted successfully", "OK");
+        //            var livestock = _livestock.FirstOrDefault(s => s.Id == livestockId);
+        //            if (livestock != null)
+        //            {
+        //                if (_database.DeleteItem(livestockId) > 0)
+        //                    _livestock.Remove(livestock);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            DisplayAlert("Failure", "Failed to delete record", "OK");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
+        //    }
+        //}
 
 
         private void ResetBtn_click(object sender, EventArgs e)

@@ -36,7 +36,7 @@ public class Database
 
         return _connection.Insert(item);
     }
-    public int DeleteItem(int livestockId)
+    public int DeleteItem(Livestock livestockId)
     {
         return _connection.Delete(livestockId);
     }
