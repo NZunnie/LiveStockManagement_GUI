@@ -1,5 +1,4 @@
 ﻿using LivestockManagement;
-using static Microsoft.Maui.Controls.Device;
 
 namespace LiveStockManagementGUI.ViewModels;
 //use dependency injection (DI) to make this view model available throught the app
@@ -7,22 +6,24 @@ public class MainViewModel
 {
     public ObservableCollection<Livestock> Livestocks { get; set; }
     public readonly Database _database;
-    public MainViewModel()
-    {
-        _database = new();
-        Livestocks = new();
-        _database.ReadItems().ForEach(x => Livestocks.Add(x));
-    }
-
+   
     // CowMilkPrice $ per kg
     private const double CowMilkPrice = 9.4;
     // SheepWoolPrice $ per kg
     private const double SheepWoolPrice = 6.2;
     // Tax $ per kg, per day
-    private const double GovernmentTax = 0.02;
+    private const double GovernmentTax = 0.2;
 
-    #region Statistic -Report page
-    public string GetGeneralStats()
+    public MainViewModel()
+    {
+        _database = new();
+        Livestocks = new();
+        _database.ReadItems().ForEach(x => Livestocks.Add(x));
+
+    }
+
+    #region Statistic -Report page 
+    public string GetTotalWeight()
     {
         return $"Total Weight of Livestock: {Livestocks.Sum(x => x.Weight)}";
     }
@@ -69,6 +70,9 @@ public class MainViewModel
         return $"On average, a single sheep makes daily profit: \n${averageSheepProfit:F2}";
     }
 
+
+    #endregion
+
     private double CalculateDailyProfit(Livestock livestock)
     {
         double income = livestock switch
@@ -84,7 +88,6 @@ public class MainViewModel
         return profit;
     }
 
-    #endregion
     #region InvestmentForecast  -Report Page
     public string EstimateInvestment(string type, int quantity)
     {
@@ -111,12 +114,53 @@ public class MainViewModel
             return $"Invalid livestock type: {type}";
         }
 
-        return $"Buying {quantity} {type}s would bring in estimated daily profit: ${estimatedDailyProfit:F2}";
+        return $"For {quantity} {type}s \nestimated daily profit: \n${estimatedDailyProfit:F2}";
 
     }
-        #endregion
+    #endregion
 
-        public string QueryByLivestockType(string type)
+    #region Search Page
+    public List<Livestock> GetFilteredLivestock(string type, string color)
+    {
+        return Livestocks.Where(x => (type == "All" || x.GetType().Name == type) &&
+                                      (color == "All" || x.Colour == color)).ToList();
+    }
+
+    public string GetLivestockSearch<T>(List<T> selectedLivestock) where T : Livestock
+    {
+        int totalCount = selectedLivestock.Count;
+        int totalCows = Livestocks.Count(x => x is Cow);
+        int totalSheep = Livestocks.Count(x => x is Sheep);
+        int totalLivestock = totalCows + totalSheep;
+
+        double totalWeight = selectedLivestock.Sum(x => x.Weight);
+        double totalProfit = selectedLivestock.Sum(x => CalculateDailyProfit(x));
+        double averageWeight = selectedLivestock.Average(x => x.Weight);
+        double totalTax = selectedLivestock.Sum(x => x.Weight * GovernmentTax);
+        double totalProduce = selectedLivestock switch
+        {
+            List<Cow> cow => cow.Sum(x => x.Milk),
+            List<Sheep> sheep => sheep.Sum(x => x.Milk),
+            _ => 0
+        };
+
+        double percentage = totalLivestock > 0 ? (totalCount / (double)totalLivestock) * 100 : 0;
+
+        return $"Total number of selected livestock: {totalCount}\n" + 
+               $"Percentage of selected livestock: {percentage:F2}%\n" + 
+               $"Daily tax of selected livestock: ${totalTax:F2}\n" +
+               $"Profit per day: ${totalProfit:F2}\n" +
+               $"Average weight: {averageWeight:F2} kg\n" +
+               $"Total produce amount: {totalProduce:F2}";
+    }
+
+
+    #endregion
+
+
+
+
+    public string QueryByLivestockType(string type)
     {
         List<Livestock> sts = Livestocks.Where(x => x.GetType().Name.Equals(type)).ToList();
         string results = $"{$"Number of {type}:",-30}{sts.Count}\n"; // first line of result

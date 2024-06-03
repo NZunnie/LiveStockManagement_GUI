@@ -8,9 +8,11 @@
     <Border Margin ="40,40" 
             BackgroundColor= "White" 
             StrokeShape="Rectangle 10">
+
         <CollectionView 
             BackgroundColor= "#add7b1"
             ItemsSource="{Binding Livestocks,Source={viewmodels:MainViewModel}}" >
+            
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border BackgroundColor= "White" StrokeShape="Rectangle 10">
