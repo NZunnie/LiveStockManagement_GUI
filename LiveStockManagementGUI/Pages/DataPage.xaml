@@ -6,16 +6,42 @@
              x:Class="LiveStockManagementGUI.Pages.DataPage"
              Title="DataPage">
     <Border Margin ="40,40" 
-            BackgroundColor= "White" 
+            BackgroundColor= "#add7b1"
             StrokeShape="Rectangle 10">
 
+        <StackLayout>
+            <!-- Header Grid for column titles -->
+            <Grid Grid.Row="0" Column="0" ColumnSpan="2" BackgroundColor="#add7b1">
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
+                    <Label 
+             Text="Livestock Data" 
+             FontSize="22" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
+                </HorizontalStackLayout>
+            </Grid>
+            <Grid BackgroundColor="#1A4D2E" Padding="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="ID" FontAttributes="Bold" TextColor="AntiqueWhite"/>
+                <Label Grid.Column="1" Text="Name" FontAttributes="Bold" TextColor="AntiqueWhite"/>
+                <Label Grid.Column="2" Text="Colour" FontAttributes="Bold" TextColor="AntiqueWhite"/>
+                <Label Grid.Column="3" Text="Milk" FontAttributes="Bold" TextColor="AntiqueWhite"/>
+                <Label Grid.Column="4" Text="Weight" FontAttributes="Bold" TextColor="AntiqueWhite"/>
+                <Label Grid.Column="5" Text="Cost" FontAttributes="Bold" TextColor="AntiqueWhite"/>
+            </Grid>
         <CollectionView 
             BackgroundColor= "#add7b1"
-            ItemsSource="{Binding Livestocks,Source={viewmodels:MainViewModel}}" >
-            
+            x:Name="DataCollectionView" >
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border BackgroundColor= "White" StrokeShape="Rectangle 10">
+                        <Border BackgroundColor= "#add7b1" StrokeShape="Rectangle ">
                         <Grid ColumnDefinitions="*,*,*,*,*,*">
                             <Label Grid.Column="1" Text="{Binding Name}"/>
                             <Label Grid.Column="0" Text="{Binding Id}"/>
@@ -29,6 +55,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
             </CollectionView>
-
+</StackLayout>
     </Border>
 </ContentPage>

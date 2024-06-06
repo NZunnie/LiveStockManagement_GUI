@@ -1,5 +1,5 @@
 ﻿using LivestockManagement;
-using System.Linq;
+
 
 namespace LiveStockManagementGUI.ViewModels;
 //use dependency injection (DI) to make this view model available throught the app
@@ -173,6 +173,6 @@ public class MainViewModel
         return results;
     }
 
-
+ 
 
 }
