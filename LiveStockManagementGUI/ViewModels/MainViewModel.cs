@@ -1,5 +1,6 @@
 ﻿using LivestockManagement;
 
+
 namespace LiveStockManagementGUI.ViewModels;
 //use dependency injection (DI) to make this view model available throught the app
 public class MainViewModel
@@ -168,23 +169,6 @@ public class MainViewModel
         return results;
     }
 
-    //public string InsertByLivestockType(string type)
-    //{
-    //    List<Livestock> sts = Livestocks.Where(x => x.GetType().Name.Equals(type)).ToList();
-    //    string results = $"{$" {type} inserted:",-30}{sts.Count}\n"; // first line of result
-    //    //results += $"{"Average weight of livestock:",-30}{sts.Average(x => x.Weight)}";
-    //    return results;
-    //}
-
-
-    //  public void DeleteById(int id)
-    //{
-    //    Livestock? livestock = Livestocks.FirstOrDefault(s => s.Id == id);
-    //    if (livestock != null)
-    //    {
-    //        if(_database.DeleteItem(id) >0)
-    //            Livestocks.Remove(livestock);
-    //    }
-    //}
+ 
 
 }

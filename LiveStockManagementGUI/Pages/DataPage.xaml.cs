@@ -6,5 +6,7 @@ public partial class DataPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = vm; // this line makes all the binding available which are in the DataPage.xaml
-	}
+		DataCollectionView.ItemsSource = vm.Livestocks;
+
+    }
 }
