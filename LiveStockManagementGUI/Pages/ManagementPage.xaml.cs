@@ -139,7 +139,7 @@ namespace LiveStockManagementGUI.Pages
                     return;
                 }
 
-                // Validate each field separately and provide specific feedback
+                // Validate each field separately with message
                 string colour = LivestockColour1.SelectedItem?.ToString();
 
                 if (!double.TryParse(Cost1.Text, out double cost))
