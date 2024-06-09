@@ -6,10 +6,11 @@ public partial class ReportPage : ContentPage
 	public ReportPage(MainViewModel vm)
 	{
 		InitializeComponent();
-		this.vm = vm;
+        vm = new MainViewModel();
 
+        this.vm = vm;
         BindingContext = vm;
-        
+
         //General 
         MonthTax.Text = vm.MonthlyTax();
 		DayProfit.Text = vm.DailyProfit();

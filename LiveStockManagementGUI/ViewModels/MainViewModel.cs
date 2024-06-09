@@ -1,5 +1,9 @@
 ﻿using LivestockManagement;
 
+//using CommunityToolkit.Mvvm.ComponentModel;
+//using CommunityToolkit.Mvvm.Input;
+//using System.Collections.Generic;
+//using System.Linq;
 
 namespace LiveStockManagementGUI.ViewModels;
 //use dependency injection (DI) to make this view model available throught the app
