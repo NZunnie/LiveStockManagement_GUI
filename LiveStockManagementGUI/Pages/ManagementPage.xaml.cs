@@ -172,7 +172,7 @@ namespace LiveStockManagementGUI.Pages
                 {
                     DisplayAlert("Success", "Record updated successfully", "OK");
 
-                    // Optionally refresh the list view or notify the UI of changes
+                    // Refresh the changes
                     var index = vm.Livestocks.IndexOf(existingLivestock);
                     vm.Livestocks[index] = existingLivestock;
                 }
