@@ -8,6 +8,14 @@
            Margin="0,30" 
            MaximumWidthRequest="300" 
            Spacing="20">
+        <Grid Grid.Row="0" Column="0" ColumnSpan="2" BackgroundColor="#1A4D2E">
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
+                <Label 
+                Text="Insert/Update/Delete Function" 
+                FontSize="15" FontAttributes="Bold" TextColor="AntiqueWhite" BackgroundColor ="Transparent" Margin ="5,10" />
+            </HorizontalStackLayout>
+        </Grid>
         <Picker x:Name="LivestockPicker"
            Title="Select Insert/Update/Delete function" 
            Grid.Row="1" Grid.Column="0"
@@ -77,9 +85,9 @@
         </StackLayout>
         
         <StackLayout x:Name="UpdateLayout" IsVisible="False" Spacing="10">
-            <Entry x:Name="UpdateLivestockId" Placeholder="Enter Livestock Id"/>
-            <!--<Entry x:Name="Cost1" Placeholder="Enter Livestock Cost"/>
-            <Entry x:Name="Weight1" Placeholder="Enter Livestock Weight"/>
+            <Entry x:Name="UpdateLivestockId" Placeholder="Enter Livestock Id" BackgroundColor="AntiqueWhite"/>
+            <Entry x:Name="Cost1" Placeholder="Enter Livestock Cost" WidthRequest="300" BackgroundColor="AntiqueWhite"/>
+            <Entry x:Name="Weight1" Placeholder="Enter Livestock Weight" BackgroundColor="AntiqueWhite"/>
             <Picker x:Name="LivestockColour1" 
             Title="Select Livestock Colour (Black/Red/White)" 
             BackgroundColor="#add7b1"
@@ -92,10 +100,10 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Entry x:Name="Milk1" Placeholder="Enter Milk Production"/>-->
+            <Entry x:Name="Milk1" Placeholder="Enter Milk Production" BackgroundColor="AntiqueWhite"/>
             <Button Text="Update" Clicked="UpdateBtn_Click"/>
         </StackLayout>
-
+      
         <StackLayout x:Name="DeleteLayout" IsVisible="False" Spacing="10">
             <Entry x:Name="DeleteLivestockId" Placeholder="Enter Livestock ID to Delete"/>
             <Button Text="Delete" Clicked="DeleteBtn_Click"/>
