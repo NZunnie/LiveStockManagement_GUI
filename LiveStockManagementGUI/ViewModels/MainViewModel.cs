@@ -138,12 +138,16 @@ public class MainViewModel
         double totalProfit = selectedLivestock.Sum(x => CalculateDailyProfit(x));
         double averageWeight = selectedLivestock.Average(x => x.Weight);
         double totalTax = selectedLivestock.Sum(x => x.Weight * GovernmentTax);
-        double totalProduce = selectedLivestock switch
+        
+        double totalProduce = 0;
+        if (selectedLivestock.All(x => x is Cow))
         {
-            List<Cow> cow => cow.Sum(x => x.Milk),
-            List<Sheep> sheep => sheep.Sum(x => x.Milk),
-            _ => 0
-        };
+            totalProduce = selectedLivestock.OfType<Cow>().Sum(x => x.Milk);
+        }
+        else if (selectedLivestock.All(x => x is Sheep))
+        {
+            totalProduce = selectedLivestock.OfType<Sheep>().Sum(x => x.Milk);
+        }
 
         double percentage = totalLivestock > 0 ? (totalCount / (double)totalLivestock) * 100 : 0;
 
@@ -152,7 +156,7 @@ public class MainViewModel
                $"Daily tax of selected livestock: ${totalTax:F2}\n" +
                $"Profit per day: ${totalProfit:F2}\n" +
                $"Average weight: {averageWeight:F2} kg\n" +
-               $"Total produce amount: {totalProduce:F2}";
+               $"Total produce amount: {totalProduce:F2} kg";
     }
 
 

@@ -1,4 +1,5 @@
 
+
 namespace LiveStockManagementGUI.Pages;
 
 public partial class SearchPage : ContentPage
@@ -44,9 +45,9 @@ public partial class SearchPage : ContentPage
         var selectedType = LivestockPicker.SelectedItem.ToString();
         var selectedColor = LivestockColourPicker.SelectedItem.ToString();
         var selectedLivestock = vm.GetFilteredLivestock(selectedType, selectedColor);
-        var result = vm.GetLivestockSearch(selectedLivestock);
+        //var result = vm.GetLivestockSearch(selectedLivestock);
 
-        SearchResult.Text = result;
+        //SearchResult.Text = result;
     }
 
     private void SearchBtn_click(object sender, EventArgs e)
@@ -64,6 +65,8 @@ public partial class SearchPage : ContentPage
 
         SearchResult.Text = result;
     }
+
+
     private void ResetClicked(object sender, EventArgs e)
     {
         LivestockPicker.SelectedIndex = -1;
