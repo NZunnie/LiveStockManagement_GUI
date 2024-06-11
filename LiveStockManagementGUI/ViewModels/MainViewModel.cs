@@ -144,6 +144,18 @@ public class MainViewModel
         double totalTax = selectedLivestock.Sum(x => x.Weight * GovernmentTax);
         
         double totalProduce = 0;
+
+
+
+
+        if (selectedLivestock.Count == 0)
+        {
+            return "No livestock found";
+        }
+
+
+
+
         if (selectedLivestock.All(x => x is Cow))
         {
             totalProduce = selectedLivestock.OfType<Cow>().Sum(x => x.Milk);

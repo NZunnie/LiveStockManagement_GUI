@@ -38,29 +38,26 @@
                      Orientation="Vertical"  
                      VerticalOptions="End">
                     <Button Text="Data List" WidthRequest="300"
-                    Clicked="SearchButton_Clicked"
+                    Clicked="DataListButton_Clicked" 
                     Margin="10"/>
                     <Button Text="Report" WidthRequest="300"
-                    Clicked="SearchButton_Clicked"
+                    Clicked="ReportButton_Clicked"
                     Margin="10"/>
                     <Button Text="Search" WidthRequest="300"
                     Clicked="SearchButton_Clicked"
                     Margin="10"/>
                     <Button Text="Management" WidthRequest="300"
-                    Clicked="SearchButton_Clicked"
+                    Clicked="ManagementButton_Clicked"
                     Margin="10"/>
                 </StackLayout>
             </Grid>
 
 
-
-
-
             <Grid>
                 <HorizontalStackLayout HorizontalOptions="Center">
-                    <Label
+                    <Label Margin="30"
                    Text ="Welcome to Livestock Management System App"
-                    FontSize="15" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
+                    FontSize="20" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
                 </HorizontalStackLayout>
             </Grid>
         </StackLayout>

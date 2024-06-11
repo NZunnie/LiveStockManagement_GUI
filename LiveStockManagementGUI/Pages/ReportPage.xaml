@@ -11,7 +11,7 @@
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
-                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Margin" Value="10,5"/>
                 <Setter Property="Padding" Value="15, 5"/>
             </Style>
             <Style TargetType="Button">
@@ -27,7 +27,7 @@
         </Grid.Resources>
 
         <!-- First Cell (Row 0, Column 0): General Statistics -->
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Grid Grid.Row="0" Grid.Column="0" Margin="30,30,0,0">
             <VerticalStackLayout>
                 <Label Text="General Statistics" 
                        FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
@@ -37,7 +37,7 @@
             </VerticalStackLayout>
         </Grid>
         <!-- Second Cell (Row 0, Column 1): Image -->
-        <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions ="Center">
+        <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions ="Center" Margin="0, 30">
             <VerticalStackLayout>
                 <Label Text="Live Stock Management" 
                        FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
@@ -47,7 +47,7 @@
         </Grid>
 
         <!-- Third Cell (Row 0, Column 2): InvestForecast -->
-        <Grid Grid.Row="0" Grid.Column="2" RowSpan="2">
+        <Grid Grid.Row="0" Grid.Column="2" RowSpan="2" Margin="0,30,30,0">
             <VerticalStackLayout>
                 <Label Text="Estimate Future Investment" 
                        FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
@@ -84,7 +84,7 @@
         </Grid>
 
         <!-- Fourth Cell (Row 1, Column 0): General Statistics -->
-        <Grid Grid.Row="1" Grid.Column="0" ColumnSpan="2">
+        <Grid Grid.Row="1" Grid.Column="0" ColumnSpan="2" Margin="30,0,0,30">
             <VerticalStackLayout>
                 <Label Text="Current Livestock Statistics" 
                FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>

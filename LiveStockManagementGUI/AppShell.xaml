@@ -9,19 +9,19 @@
 
     <TabBar>
         <Tab Title="Home">
-            <ShellContent Title ="Home" ContentTemplate="{DataTemplate Pages:HomePage}"/>
+            <ShellContent  Route="HomePage" Title ="Home" ContentTemplate="{DataTemplate Pages:HomePage}"/>
         </Tab>
         <Tab Title="Data Listing">
-            <ShellContent Title ="Data Listing" ContentTemplate="{DataTemplate Pages:DataPage}"/>
+            <ShellContent  Route="DataPage" Title ="Data Listing" ContentTemplate="{DataTemplate Pages:DataPage}"/>
         </Tab>
         <Tab Title="Report">
-            <ShellContent Title ="Report Page" ContentTemplate="{DataTemplate Pages:ReportPage}"/>
+            <ShellContent  Route="ReportPage" Title ="Report Page" ContentTemplate="{DataTemplate Pages:ReportPage}"/>
         </Tab>
         <Tab Title="Search">
-            <ShellContent Title ="Search Page" ContentTemplate="{DataTemplate Pages:SearchPage}"/>
+            <ShellContent Route="SearchPage" Title ="Search Page" ContentTemplate="{DataTemplate Pages:SearchPage}"/>
         </Tab>
         <Tab Title="Management">
-            <ShellContent Title ="Management Page" ContentTemplate="{DataTemplate Pages:ManagementPage}"/>
+            <ShellContent  Route="ManagementPage" Title ="Management Page" ContentTemplate="{DataTemplate Pages:ManagementPage}"/>
         </Tab>
     </TabBar>
 

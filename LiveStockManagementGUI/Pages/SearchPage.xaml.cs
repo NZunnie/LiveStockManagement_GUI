@@ -5,15 +5,14 @@ namespace LiveStockManagementGUI.Pages;
 public partial class SearchPage : ContentPage
 {
     private MainViewModel vm;
-    public SearchPage()
+    public SearchPage(MainViewModel vm)
     {
+
         InitializeComponent();
 
         vm = new MainViewModel();
-
+        this.vm = vm;
         BindingContext = vm;
-
-
 
         // Set the ItemsSource for the Picker
         LivestockPicker.ItemsSource = new string[] { "Cow", "Sheep" };
@@ -45,9 +44,7 @@ public partial class SearchPage : ContentPage
         var selectedType = LivestockPicker.SelectedItem.ToString();
         var selectedColor = LivestockColourPicker.SelectedItem.ToString();
         var selectedLivestock = vm.GetFilteredLivestock(selectedType, selectedColor);
-        //var result = vm.GetLivestockSearch(selectedLivestock);
 
-        //SearchResult.Text = result;
     }
 
     private void SearchBtn_click(object sender, EventArgs e)
@@ -61,6 +58,12 @@ public partial class SearchPage : ContentPage
         var selectedType = LivestockPicker.SelectedItem.ToString();
         var selectedColor = LivestockColourPicker.SelectedItem.ToString();
         var selectedLivestock = vm.GetFilteredLivestock(selectedType, selectedColor);
+
+        if (selectedLivestock.Count == 0)
+        {
+            DisplayAlert("No Results", "No livestock found with the selected type and color. Please try again.", "OK");
+            return;
+        }
         var result = vm.GetLivestockSearch(selectedLivestock);
 
         SearchResult.Text = result;
