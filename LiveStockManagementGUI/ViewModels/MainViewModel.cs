@@ -188,7 +188,59 @@ public class MainViewModel
         results += $"{"Average weight of livestock:",-30}{sts.Average(x => x.Weight)}";
         return results;
     }
+    #region
 
- 
+    public async Task<bool> InsertLivestockAsync(Livestock livestock)
+    {
+        var inserted = await _database.InsertItemAsync(livestock);
+        if (inserted > 0)
+        {
+            Livestocks.Add(livestock);
+            return true;
+        }
+        return false;
+    }
+    public async Task<bool> UpdateLivestockAsync(int id, string colour, double cost, double weight, double milk)
+    {
+        var existingLivestock = Livestocks.FirstOrDefault(l => l.Id == id);
+        if (existingLivestock == null)
+        {
+            return false;
+        }
+
+        existingLivestock.Colour = colour;
+        existingLivestock.Cost = cost;
+        existingLivestock.Weight = weight;
+        existingLivestock.Milk = milk;
+
+        var updated = await _database.UpdateItemAsync(existingLivestock);
+        if (updated > 0)
+        {
+            var index = Livestocks.IndexOf(existingLivestock);
+            Livestocks[index] = existingLivestock;
+            return true;
+        }
+        return false;
+    }
+
+    public async Task<bool> DeleteLivestockAsync(int id)
+    {
+        var livestock = Livestocks.FirstOrDefault(l => l.Id == id);
+        if (livestock == null)
+        {
+            return false;
+        }
+
+        var deleted = await _database.DeleteItemAsync(livestock);
+        if (deleted > 0)
+        {
+            Livestocks.Remove(livestock);
+            return true;
+        }
+        return false;
+    }
+
+    #endregion
+
 
 }

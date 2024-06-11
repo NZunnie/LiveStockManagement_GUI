@@ -33,17 +33,22 @@ public class Database
         livestocks.AddRange(lst2);
         return livestocks;
     }
-    public int InsertItem(Livestock item) //insert super class "Livestock" , insert Cow or Sheep
+    public async Task<int> InsertItemAsync(Livestock item)
+    /*public int InsertItem(Livestock item)*/ //insert super class "Livestock" , insert Cow or Sheep
     {
-
-        return _connection.Insert(item);
+        return await Task.Run(() => _connection.Insert(item));
+        //return _connection.Insert(item);
     }
-    public int DeleteItem(Livestock livestockId)
+    public async Task<int> DeleteItemAsync(Livestock livestockId)
+    //public int DeleteItem(Livestock livestockId)
     {
-        return _connection.Delete(livestockId);
+        return await Task.Run(() => _connection.Delete(livestockId));
+        //return _connection.Delete(livestockId);
     }
-    public int UpdateItem(Livestock item)
+    public async Task<int> UpdateItemAsync(Livestock item)
+    //public int UpdateItem(Livestock item)
     {
-        return _connection.Update(item);
+        return await Task.Run(() => _connection.Update(item));
+        //return _connection.Update(item);
     }
 }
