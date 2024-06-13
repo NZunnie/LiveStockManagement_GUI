@@ -37,7 +37,7 @@ namespace LiveStockManagementGUI.Pages
             UpdateLayout.IsVisible = false;
             DeleteLayout.IsVisible = false;
 
-            // Show the appropriate layout based on the selection
+            // Below code will show the selection
             if (selectedOption == "Insert")
             {
                 InsertLayout.IsVisible = true;
@@ -144,10 +144,34 @@ namespace LiveStockManagementGUI.Pages
             }
 
             }
+        private async void DetailsBtn_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(UpdateLivestockId.Text, out int Id))
+            {
+                // Getting the existing livestock record
+                Livestock existingLivestock = vm.Livestocks.FirstOrDefault(l => l.Id == Id);
+
+                if (existingLivestock == null)
+                {
+                    await DisplayAlert("Failure", "Livestock with the specified Id does not exist", "OK");
+                    return;
+                }
+
+                // Auto-populate the related fields for the selected id
+                LivestockColour1.SelectedItem = existingLivestock.Colour;
+                Cost1.Text = existingLivestock.Cost.ToString();
+                Weight1.Text = existingLivestock.Weight.ToString();
+                Milk1.Text = existingLivestock.Milk.ToString();
+            }
+            else
+            {
+                await DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
+            }
+        }
         //private void UpdateBtn_Click(object sender, EventArgs e)
         private async void UpdateBtn_Click(object sender, EventArgs e)
         {
-            // Ensure the Id is valid
+            // This will ensure the Id is valid
             if (int.TryParse(UpdateLivestockId.Text, out int Id))
             {
                 // Find the existing livestock record
@@ -159,7 +183,7 @@ namespace LiveStockManagementGUI.Pages
                     return;
                 }
 
-                // Validate each field separately with message
+                // Validate every field
                 string colour = LivestockColour1.SelectedItem?.ToString();
 
                 if (!double.TryParse(Cost1.Text, out double cost))
@@ -179,7 +203,7 @@ namespace LiveStockManagementGUI.Pages
                     await DisplayAlert("Invalid Input", "Please enter a valid milk value", "OK");
                     return;
                 }
-
+                #region
                 // Update livestock details
                 //existingLivestock.Id = Id;
                 //existingLivestock.Colour = colour;
@@ -206,6 +230,7 @@ namespace LiveStockManagementGUI.Pages
                 //{
                 //    DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
                 //}
+                #endregion
                 var update = await vm.UpdateLivestockAsync(Id, colour, cost, weight, milk);
 
                 if (update)
@@ -292,9 +317,9 @@ namespace LiveStockManagementGUI.Pages
             Milk.Text = string.Empty;
             DeleteLivestockId.Text = string.Empty;
             UpdateLivestockId.Text = string.Empty;
-            InsertLayout.IsVisible = false;
-            UpdateLayout.IsVisible = false;
-            DeleteLayout.IsVisible = false;
+            //InsertLayout.IsVisible = false;
+            //UpdateLayout.IsVisible = false;
+            //DeleteLayout.IsVisible = false;
             Cost1.Text = string.Empty;
             Milk1.Text = string.Empty;
             Weight1.Text = string.Empty;
