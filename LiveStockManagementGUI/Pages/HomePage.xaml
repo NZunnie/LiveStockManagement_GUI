@@ -7,17 +7,30 @@
             BackgroundColor= "#add7b1"
             StrokeShape="Rectangle 10">
 
+        <Border.Resources>
+            <Style TargetType="Button">
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="AntiqueWhite"/>
+                <Setter Property="BackgroundColor" Value="#1A4D2E"/>
+                <Setter Property="Margin" Value="10,5"/>
+                <Setter Property="Padding" Value="15, 5"/>
+            </Style>
+        </Border.Resources>
+        
         <StackLayout>
             <!-- Header Grid for column titles -->
-            <Grid Margin="20" Grid.Row="0" Column="0" ColumnSpan="2" BackgroundColor="#add7b1">
+            <Grid  Grid.Row="0" Column="0" ColumnSpan="2" BackgroundColor="#add7b1">
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
-                    <Label 
+                    <Label Padding="15"
                      Text="Livestock Management System" 
                      FontSize="22" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
                 </HorizontalStackLayout>
             </Grid>
-            
+
             <!--<Grid>
                 <Image Source="report_logo.png" HeightRequest="300" WidthRequest="300"/>
             </Grid>-->
@@ -37,16 +50,16 @@
                 <StackLayout Grid.Column="1" 
                      Orientation="Vertical"  
                      VerticalOptions="End">
-                    <Button Text="Data List" WidthRequest="300"
+                    <Button Text="Data List" 
                     Clicked="DataListButton_Clicked" 
                     Margin="10"/>
-                    <Button Text="Report" WidthRequest="300"
+                    <Button Text="Report" 
                     Clicked="ReportButton_Clicked"
                     Margin="10"/>
-                    <Button Text="Search" WidthRequest="300"
+                    <Button Text="Search"
                     Clicked="SearchButton_Clicked"
                     Margin="10"/>
-                    <Button Text="Management" WidthRequest="300"
+                    <Button Text="Management" 
                     Clicked="ManagementButton_Clicked"
                     Margin="10"/>
                 </StackLayout>
