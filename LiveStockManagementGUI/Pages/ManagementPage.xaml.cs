@@ -61,7 +61,11 @@ namespace LiveStockManagementGUI.Pages
             string type = LivestockType.SelectedItem?.ToString();
             string colour = LivestockColour.SelectedItem?.ToString();
             var livestock = new Livestock();
-             
+            if (string.IsNullOrEmpty(type))
+            {
+                await DisplayAlert("Error", "Please select a livestock type first.", "OK");
+                return;
+            }
             if (!double.TryParse(Cost.Text, out double cost))
             {
                 await DisplayAlert("Invalid Input", "Please enter a valid cost", "OK");
@@ -73,10 +77,15 @@ namespace LiveStockManagementGUI.Pages
                 await DisplayAlert("Invalid Input", "Please enter a valid weight", "OK");
                 return;
             }
+            if (string.IsNullOrEmpty(colour))
+            {
+                await DisplayAlert("Error", "Please select a livestock colour.", "OK");
+                return;
+            }
 
             if (!double.TryParse(Milk.Text, out double milk))
             {
-                await DisplayAlert("Invalid Input", "Please enter a valid milk value", "OK");
+                await DisplayAlert("Invalid Input", "Please enter product value", "OK");
                 return;
             }
 
@@ -139,7 +148,7 @@ namespace LiveStockManagementGUI.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Failure", "Failed to add record", "OK");
+                    await DisplayAlert("Error", "Failed to add record", "OK");
                 }
             }
 
@@ -153,7 +162,7 @@ namespace LiveStockManagementGUI.Pages
 
                 if (existingLivestock == null)
                 {
-                    await DisplayAlert("Failure", "Livestock with the specified Id does not exist", "OK");
+                    await DisplayAlert("Error", $"Livestock with the Id {Id} does not exist", "OK");
                     return;
                 }
 
@@ -165,7 +174,7 @@ namespace LiveStockManagementGUI.Pages
             }
             else
             {
-                await DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
+                await DisplayAlert("Error", "Please enter a valid livestock ID first", "OK");
             }
         }
         //private void UpdateBtn_Click(object sender, EventArgs e)
@@ -179,7 +188,7 @@ namespace LiveStockManagementGUI.Pages
 
                 if (existingLivestock == null)
                 {
-                    await DisplayAlert("Failure", "Livestock with the specified Id does not exist", "OK");
+                    await DisplayAlert("Error", "Livestock with the specified Id does not exist", "OK");
                     return;
                 }
 
@@ -239,7 +248,7 @@ namespace LiveStockManagementGUI.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Failure", "Failed to update record", "OK");
+                    await DisplayAlert("Error", "Failed to update record", "OK");
                 }
             }
         }
@@ -256,7 +265,7 @@ namespace LiveStockManagementGUI.Pages
 
                 if (itemToRemove == null)
                 {
-                    await DisplayAlert("Failure", $"Non-existent livestock Id", "OK");
+                    await DisplayAlert("Error", $"Invalid livestock Id", "OK");
                     return;
                 }
 
@@ -302,7 +311,7 @@ namespace LiveStockManagementGUI.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Failure", "Failed to delete record", "OK");
+                    await DisplayAlert("Error", "Failed to delete record", "OK");
                 }
             }
         }
