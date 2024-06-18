@@ -1,5 +1,3 @@
-
-
 namespace LiveStockManagementGUI.Pages;
 
 public partial class SearchPage : ContentPage
@@ -19,8 +17,10 @@ public partial class SearchPage : ContentPage
         LivestockColourPicker.ItemsSource = new string[] { "Black", "Red", "White", "All" };
 
 
-      
     }
+
+    
+
 
     //private void OnLivestockTypeSelectionChange(object sender, EventArgs e)
     //{

@@ -49,7 +49,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Pages\ReportPage - Copy.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\reportLogo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Pages\ReportPage - Copy.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
