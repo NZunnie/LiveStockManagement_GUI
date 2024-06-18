@@ -16,11 +16,13 @@
                     <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
                     <Label Padding="15"
                            Text="Livestock Data" 
-                           FontSize="22" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
+                           FontSize="22" 
+                           FontAttributes="Bold" 
+                           TextColor="#1A4D2E" 
+                           BackgroundColor ="Transparent"/>
                 </HorizontalStackLayout>
             </Grid>
             <Grid BackgroundColor="#1A4D2E" Margin="10,0" Padding="10,0" ColumnDefinitions="*,*,*,*,*,*"  >
-               
                 <Label Grid.Column="0" Text="ID" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" />
                 <Label Grid.Column="1" Text="Name" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
                 <Label Grid.Column="2" Text="Colour" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
@@ -28,11 +30,10 @@
                 <Label Grid.Column="4" Text="Weight (kg)" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
                 <Label Grid.Column="5" Text="Cost ($)" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
             </Grid>
-        <CollectionView 
+            <CollectionView 
             BackgroundColor= "#add7b1"
             x:Name="DataCollectionView" >
-
-            <CollectionView.ItemTemplate>
+                <CollectionView.ItemTemplate>
                 <DataTemplate>
                         <!--<Border BackgroundColor= "#add7b1" StrokeShape="Rectangle ">-->
                         <Border BackgroundColor= "#e6f3e8" StrokeShape="Rectangle " Margin="10,0">
@@ -48,7 +49,7 @@
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            </CollectionView>
-</StackLayout>
+          </CollectionView>
+        </StackLayout>
     </Border>
 </ContentPage>

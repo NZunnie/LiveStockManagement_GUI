@@ -24,7 +24,8 @@ namespace LiveStockManagementGUI.Pages
             _database = new Database(); // Initialize  database here
             LivestockPicker.ItemsSource = new string[] { "Insert", "Update", "Delete" };
             //LivestockColour.ItemsSource = new string[] { "Black", "Red", "White", "All" };
-         
+            //LivestockPicker.ItemsSource = new string[] { "Cow", "Sheep" };
+
 
         }
 
@@ -66,13 +67,13 @@ namespace LiveStockManagementGUI.Pages
                 await DisplayAlert("Error", "Please select a livestock type first.", "OK");
                 return;
             }
-            if (!double.TryParse(Cost.Text, out double cost))
+            if (!double.TryParse(Cost.Text, out double cost) || cost < 0)
             {
                 await DisplayAlert("Invalid Input", "Please enter a valid cost", "OK");
                 return;
             }
 
-            if (!double.TryParse(Weight.Text, out double weight))
+            if (!double.TryParse(Weight.Text, out double weight) || weight < 0)
             {
                 await DisplayAlert("Invalid Input", "Please enter a valid weight", "OK");
                 return;
@@ -83,7 +84,7 @@ namespace LiveStockManagementGUI.Pages
                 return;
             }
 
-            if (!double.TryParse(Milk.Text, out double milk))
+            if (!double.TryParse(Milk.Text, out double milk) || milk < 0)
             {
                 await DisplayAlert("Invalid Input", "Please enter product value", "OK");
                 return;
@@ -116,25 +117,6 @@ namespace LiveStockManagementGUI.Pages
                     };
 
                 }
-
-                // Insert into the database
-                //    var inserted = _database.InsertItem(livestock);
-                //    if (inserted > 0)
-                //    {
-                //        DisplayAlert("Success", $" New Record Added inserted successfully. \n" +
-                //                           $"Name: {type}\n" +
-                //                           $"Colour: {colour}\n" +
-                //                           $"Milk: {milk}\n" +
-                //                           $"Weight: {weight}\n" +
-                //                           $"Cost: {cost}", "OK");
-                //        vm.Livestocks.Add(livestock);
-
-                //    }
-                //    else
-                //    {
-                //        DisplayAlert("Failure", "Failed to add record", "OK");
-                //    }
-                //}
                 var inserted = await vm.InsertLivestockAsync(livestock);
 
                 if (inserted)
@@ -195,21 +177,21 @@ namespace LiveStockManagementGUI.Pages
                 // Validate every field
                 string colour = LivestockColour1.SelectedItem?.ToString();
 
-                if (!double.TryParse(Cost1.Text, out double cost))
+                if (!double.TryParse(Cost1.Text, out double cost) || cost < 0)
                 {
-                    await DisplayAlert("Invalid Input", "Please enter a valid cost", "OK");
+                    await DisplayAlert("Invalid Input", "Please enter a valid positive cost", "OK");
                     return;
                 }
 
-                if (!double.TryParse(Weight1.Text, out double weight))
+                if (!double.TryParse(Weight1.Text, out double weight) || weight < 0)
                 {
-                    await DisplayAlert("Invalid Input", "Please enter a valid weight", "OK");
+                    await DisplayAlert("Invalid Input", "Please enter a valid positive weight", "OK");
                     return;
                 }
 
-                if (!double.TryParse(Milk1.Text, out double milk))
+                if (!double.TryParse(Milk1.Text, out double milk) || milk < 0)
                 {
-                    await DisplayAlert("Invalid Input", "Please enter a valid milk value", "OK");
+                    await DisplayAlert("Invalid Input", "Please enter a valid positive milk value", "OK");
                     return;
                 }
                 #region
@@ -261,43 +243,13 @@ namespace LiveStockManagementGUI.Pages
             if (int.TryParse(DeleteLivestockId.Text, out int livestockId))
             {
                 Livestock itemToRemove = vm.Livestocks.FirstOrDefault(l => l.Id == livestockId);
-
+               
 
                 if (itemToRemove == null)
                 {
                     await DisplayAlert("Error", $"Invalid livestock Id", "OK");
                     return;
                 }
-
-
-
-                //    var deleted = _database.DeleteItem(itemToRemove);
-                //    if (deleted > 0)
-                //    {
-
-                //        bool removeFromList = vm.Livestocks.Remove(itemToRemove);
-                //        if (removeFromList)
-                //        {
-
-                //            DisplayAlert("Success", $"Record with Id no. {livestockId} deleted successfully.\n" +
-                //                           $"Name: {itemToRemove.Name}\n" +
-                //                           $"Colour: {itemToRemove.Colour}\n" +
-                //                           $"Milk: {itemToRemove.Milk}\n" +
-                //                           $"Weight: {itemToRemove.Weight}\n" +
-                //                           $"Cost: {itemToRemove.Cost}", "OK");
-                //        }
-
-                //    }
-                //    else
-                //    {
-                //        DisplayAlert("Failure", "Failed to delete record", "OK");
-                //    }
-                //}
-                //else
-                //{
-                //    DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
-                //}
-
                 var success = await vm.DeleteLivestockAsync(livestockId);
 
                 if (success)
@@ -313,6 +265,12 @@ namespace LiveStockManagementGUI.Pages
                 {
                     await DisplayAlert("Error", "Failed to delete record", "OK");
                 }
+
+            }
+            else
+            {
+                // Display an error message if the input is not a valid integer
+                await DisplayAlert("Error", "Please enter a valid livestock Id", "OK");
             }
         }
 
@@ -326,9 +284,6 @@ namespace LiveStockManagementGUI.Pages
             Milk.Text = string.Empty;
             DeleteLivestockId.Text = string.Empty;
             UpdateLivestockId.Text = string.Empty;
-            //InsertLayout.IsVisible = false;
-            //UpdateLayout.IsVisible = false;
-            //DeleteLayout.IsVisible = false;
             Cost1.Text = string.Empty;
             Milk1.Text = string.Empty;
             Weight1.Text = string.Empty;
