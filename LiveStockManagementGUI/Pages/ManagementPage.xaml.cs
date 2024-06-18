@@ -24,7 +24,7 @@ namespace LiveStockManagementGUI.Pages
             _database = new Database(); // Initialize  database here
             LivestockPicker.ItemsSource = new string[] { "Insert", "Update", "Delete" };
             //LivestockColour.ItemsSource = new string[] { "Black", "Red", "White", "All" };
-            //LivestockType.ItemsSource = new string[] { "Cow", "Sheep" };
+         
 
         }
 
