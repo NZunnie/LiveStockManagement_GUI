@@ -3,106 +3,108 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.ReportPage"
              Title="ReportPage">
-    <Grid Margin="0,30" ColumnDefinitions="*,*,*" ColumnSpacing="20" HorizontalOptions="Center"
-          RowDefinitions="*,*" RowSpacing="20" VerticalOptions="Center" BackgroundColor= "#add7b1">
-        
-        <Grid.Resources>
-            <Style TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
-                <Setter Property="Margin" Value="10,5"/>
-                <Setter Property="Padding" Value="15, 5"/>
-            </Style>
-            <Style TargetType="Button">
-                <Setter Property="Margin" Value="10"/>
-                <Setter Property="Padding" Value="15, 5"/>
-            </Style>
-            <Style TargetType="Picker">
-                <Setter Property="Margin" Value="10"/>
-            </Style>
-            <Style TargetType="Entry">
-                <Setter Property="Margin" Value="10"/>
-            </Style>
-        </Grid.Resources>
+   
+        <Grid Margin="0,30" ColumnDefinitions="*,*,*" ColumnSpacing="20" HorizontalOptions="Center" MinimumHeightRequest="500"
+          RowDefinitions="*,*" RowSpacing="20" VerticalOptions="StartAndExpand" BackgroundColor= "#add7b1">
 
-        <!-- First Cell (Row 0, Column 0): General Statistics -->
-        <Grid Grid.Row="0" Grid.Column="0" Margin="30,30,0,0">
-            <VerticalStackLayout>
-                <Label Text="General Statistics" 
-                       FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
-                <Label x:Name="MonthTax" Text="{Binding MonthTax}" />
-                <Label x:Name="DayProfit" Text="{Binding DayProfit}" />
-                <Label x:Name="AveAllWeight" Text="{Binding AveAllWeight}" />
-            </VerticalStackLayout>
-        </Grid>
-        <!-- Second Cell (Row 0, Column 1): Image -->
-        <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions ="Center" Margin="0, 30">
-            <VerticalStackLayout>
-                <Label Text="Live Stock Management" 
-                       FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
-                <Image Source="report_logo.png" HeightRequest="200" WidthRequest="200"/>
-               
-            </VerticalStackLayout>
-        </Grid>
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
+                    <Setter Property="Margin" Value="10,0,10,10"/>
+                    <Setter Property="Padding" Value="15, 5"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="Padding" Value="15, 5"/>
+                </Style>
+                <Style TargetType="Picker">
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="FontSize" Value="18"/>
+                </Style>
+                <Style TargetType="Entry">
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="FontSize" Value="18"/>
+                </Style>
+            </Grid.Resources>
 
-        <!-- Third Cell (Row 0, Column 2): InvestForecast -->
-        <Grid Grid.Row="0" Grid.Column="2" RowSpan="2" Margin="0,30,30,0">
-            <VerticalStackLayout>
-                <Label Text="Estimate Future Investment" 
-                       FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
-                <Picker x:Name="LivestockPicker"
+            <!-- First Cell (Row 0, Column 0): General Statistics -->
+            <Grid Grid.Row="0" Grid.Column="0" Margin="30,30,0,0"  >
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="General Statistics" 
+                        FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                    <Label x:Name="MonthTax" Text="{Binding MonthTax}" FontSize="18"/>
+                    <Label x:Name="DayProfit" Text="{Binding DayProfit}" FontSize="18"/>
+                    <Label x:Name="AveAllWeight" Text="{Binding AveAllWeight}" FontSize="18"/>
+                </VerticalStackLayout>
+            </Grid>
+            <!-- Second Cell (Row 0, Column 1): Image -->
+            <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions ="Center" Margin="0, 30" >
+                <VerticalStackLayout>
+                    <Label Text="Live Stock Management" 
+                       FontSize="20" FontAttributes="Bold"  HorizontalTextAlignment="Center"
+                       WidthRequest="300"   
+                       BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                    <Image Source="report_logo.png" HeightRequest="210" WidthRequest="210" />
+
+                </VerticalStackLayout>
+
+            </Grid>
+
+            <!-- Third Cell (Row 0, Column 2): InvestForecast -->
+            <Grid Grid.Row="0" Grid.Column="2" RowSpan="2" Margin="0,30,30,0">
+                <VerticalStackLayout>
+                    <Label Text="Estimate Future Investment" 
+                        FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                    <Picker x:Name="LivestockPicker"
                         Title="Select Livestock type" 
                         BackgroundColor="AntiqueWhite"
                         HorizontalOptions="Start" 
                         TitleColor="#1A4D2E"
-                        WidthRequest="300" 
-                        SelectedIndexChanged="OnLivestockTypeSelectionChange">  
-                </Picker>
-                <Entry x:Name="Quentity" 
+                        WidthRequest="400" 
+                        SelectedIndexChanged="OnLivestockTypeSelectionChange">
+                    </Picker>
+                    <Entry x:Name="Quentity" 
                        Placeholder="Enter the quantity of investment animals:" 
                        PlaceholderColor="Gray"
                        BackgroundColor="AntiqueWhite" />
 
-                <Button Clicked="NumberEntryBtn_click"
+                    <Button Clicked="NumberEntryBtn_click"
                         Text="OK" 
                         HorizontalOptions="FillAndExpand" />
-                <Label x:Name="EstimateInvestment" 
-                       Text="{Binding EstimateInvestment}" />
-                <Button 
-                    Clicked="ResetClicked" 
-                    Text="Reset" 
-                    HorizontalOptions="FillAndExpand" />
-                <!--<HorizontalStackLayout Margin="20,10" HorizontalOptions="End">
-                    <Image Source="cow.png" HeightRequest="50" WidthRequest="50"/>
-                    <Image Source="sheep.png" HeightRequest="50" WidthRequest="50"/>
-                </HorizontalStackLayout>-->
-                <Image Source="logo_green.png" HeightRequest="70" WidthRequest="200"
-                       HorizontalOptions="End" Margin="5,10" />
-               
-            </VerticalStackLayout>
+                    <Label x:Name="EstimateInvestment" 
+                       Text="{Binding EstimateInvestment}"
+                           HeightRequest="100"/>
+                    <Button 
+                        Clicked="ResetClicked" 
+                        Text="Reset" 
+                        HorizontalOptions="FillAndExpand" />
+
+                    <Image Source="logo_green.png" HeightRequest="70" WidthRequest="200"
+                        HorizontalOptions="End" Margin="5,10" />
+
+                </VerticalStackLayout>
+            </Grid>
+
+            <!-- Fourth Cell (Row 1, Column 0): General Statistics -->
+            <Grid Grid.Row="1" Grid.Column="0" ColumnSpan="2" Margin="30,0,0,30">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Current Livestock Statistics" 
+                            FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                    <HorizontalStackLayout  >
+                        <VerticalStackLayout >
+                        <Label x:Name="TotalCow" Text="{Binding TotalCow}" FontSize="18" HorizontalOptions="FillAndExpand" Margin="10"/>
+                        <Label x:Name="TotalSheep" Text="{Binding TotalSheep}" FontSize="18" HorizontalOptions="FillAndExpand" Margin="10"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout >
+                            <Label x:Name="AveCow" Text="{Binding AveCow}" FontSize="18" HorizontalOptions="FillAndExpand" Margin="10,10,0,10"/>
+                        <Label x:Name="AveSheep" Text="{Binding AveSheep}" FontSize="18" HorizontalOptions="FillAndExpand" Margin="10,10,0,10"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
+
         </Grid>
-
-        <!-- Fourth Cell (Row 1, Column 0): General Statistics -->
-        <Grid Grid.Row="1" Grid.Column="0" ColumnSpan="2" Margin="30,0,0,30">
-            <VerticalStackLayout>
-                <Label Text="Current Livestock Statistics" 
-               FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
-                <HorizontalStackLayout  >
-                    <VerticalStackLayout>
-                        <Label x:Name="TotalCow" Text="{Binding TotalCow}" />
-                        <Label x:Name="TotalSheep" Text="{Binding TotalSheep}" />
-                    </VerticalStackLayout>
-                    <VerticalStackLayout>
-                        <Label x:Name="AveCow" Text="{Binding AveCow}" />
-                        <Label x:Name="AveSheep" Text="{Binding AveSheep}" />
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
-        </Grid>
-
-
-        
-
-</Grid>
+    
 </ContentPage>

@@ -27,14 +27,11 @@
                     <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
                     <Label Padding="15"
                      Text="Livestock Management System" 
-                     FontSize="22" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
+                     FontSize="30" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
                 </HorizontalStackLayout>
             </Grid>
 
-            <!--<Grid>
-                <Image Source="report_logo.png" HeightRequest="300" WidthRequest="300"/>
-            </Grid>-->
-
+            
             <Grid Margin="20" ColumnDefinitions="*,*" ColumnSpacing="20" VerticalOptions="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -69,7 +66,7 @@
             <Grid>
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <Label Margin="30"
-                   Text ="Welcome to Livestock Management System App"
+                    Text ="Welcome to Livestock Management System App"
                     FontSize="20" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
                 </HorizontalStackLayout>
             </Grid>

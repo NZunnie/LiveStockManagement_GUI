@@ -16,11 +16,11 @@
                     <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
                     <Label Padding="15"
                            Text="Livestock Data" 
-                           FontSize="22" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
+                           FontSize="30" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
                 </HorizontalStackLayout>
+                
             </Grid>
             <Grid BackgroundColor="#1A4D2E" Margin="10,0" Padding="10,0" ColumnDefinitions="*,*,*,*,*,*"  >
-               
                 <Label Grid.Column="0" Text="ID" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" />
                 <Label Grid.Column="1" Text="Name" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
                 <Label Grid.Column="2" Text="Colour" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
@@ -43,7 +43,6 @@
                                 <Label Grid.Column="3" Text="{Binding Milk}" Padding="10,2"/>
                                 <Label Grid.Column="4" Text="{Binding Weight}" Padding="10,2"/>
                                 <Label Grid.Column="5" Text="{Binding Cost}" Padding="10,2"/>
-                            
                         </Grid>
                     </Border>
                 </DataTemplate>
