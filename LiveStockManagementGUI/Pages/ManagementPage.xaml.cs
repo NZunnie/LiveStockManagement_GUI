@@ -234,7 +234,35 @@ namespace LiveStockManagementGUI.Pages
                 }
             }
         }
+        private async void DetailsBtn_Click1(object sender, EventArgs e)
+        {
+            if (int.TryParse(DeleteLivestockId.Text, out int Id))
+            {
+                // Getting the existing livestock record
+                Livestock existingLivestock = vm.Livestocks.FirstOrDefault(l => l.Id == Id);
 
+                if (existingLivestock == null)
+                {
+                    await DisplayAlert("Error", $"Livestock with the Id {Id} does not exist", "OK");
+                    return;
+                }
+
+                // Auto-populate the related fields for the selected id
+                LivestockColour2.Text = existingLivestock.Colour;
+                Cost2.Text = existingLivestock.Cost.ToString();
+                Weight2.Text = existingLivestock.Weight.ToString();
+                Milk2.Text = existingLivestock.Milk.ToString();
+
+                LivestockColour2.IsReadOnly = true;
+                Cost2.IsReadOnly = true;
+                Weight2.IsReadOnly = true;
+                Milk2.IsReadOnly = true;
+            }
+            else
+            {
+                await DisplayAlert("Error", "Please enter a valid livestock ID first", "OK");
+            }
+        }
 
         //private void DeleteBtn_Click(object sender, EventArgs e)
         private async void DeleteBtn_Click(object sender, EventArgs e)
@@ -260,6 +288,8 @@ namespace LiveStockManagementGUI.Pages
                                            $"Milk: {itemToRemove.Milk}\n" +
                                            $"Weight: {itemToRemove.Weight}\n" +
                                            $"Cost: {itemToRemove.Cost}", "OK");
+
+
                 }
                 else
                 {
@@ -288,7 +318,11 @@ namespace LiveStockManagementGUI.Pages
             Milk1.Text = string.Empty;
             Weight1.Text = string.Empty;
             LivestockColour1.SelectedIndex = -1;
-            
+            Cost2.Text = string.Empty;
+            Milk2.Text = string.Empty;
+            Weight2.Text = string.Empty;
+            LivestockColour2.Text = string.Empty;
+
         }
     }
 }

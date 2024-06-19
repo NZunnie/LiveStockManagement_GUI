@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.ManagementPage"
              Title="ManagementPage">
-    
+    <ScrollView>
         <VerticalStackLayout
            Margin="0,20" 
            MaximumWidthRequest="400" 
@@ -65,7 +65,7 @@
                    BackgroundColor="AntiqueWhite"/>
             <Picker x:Name="LivestockColour" 
                         Title="Select Livestock Colour (Black/Red/White)" 
-                    HorizontalOptions="End"
+                    HorizontalOptions="Start"
                         BackgroundColor="#add7b1"
                         WidthRequest="400">
                 <Picker.ItemsSource>
@@ -85,7 +85,7 @@
             <Button Text="Insert" Clicked="InsertBtn_Click"/>
         </StackLayout>
 
-        <StackLayout x:Name="UpdateLayout" IsVisible="False" Spacing="1">
+        <StackLayout x:Name="UpdateLayout" IsVisible="False">
             <Entry x:Name="UpdateLivestockId" 
                    Placeholder="Enter Livestock Id" 
                    BackgroundColor="AntiqueWhite"/>
@@ -118,10 +118,34 @@
             <Button Text="Update" Clicked="UpdateBtn_Click"/>
         </StackLayout>
 
-        <StackLayout x:Name="DeleteLayout" IsVisible="False" Spacing="10">
+        <StackLayout x:Name="DeleteLayout" IsVisible="False">
             <Label Text="Enter Livestock Id" />
             <Entry x:Name="DeleteLivestockId" 
                    Placeholder="Enter Livestock ID to Delete"
+                   BackgroundColor="AntiqueWhite"/>
+            <Button Text="Details" Clicked="DetailsBtn_Click1" WidthRequest="400"/>
+            
+            <Label Text="Livestock Cost" HorizontalOptions="Start"/>
+            <Entry x:Name="Cost2" IsReadOnly="True"
+                    Placeholder="Livestock Cost" 
+                    WidthRequest="400"
+                    BackgroundColor="AntiqueWhite"/>
+            
+            <Label Text="Livestock Weight" />
+            <Entry x:Name="Weight2" IsReadOnly="True"
+                   Placeholder="Livestock Weight" 
+                   BackgroundColor="AntiqueWhite"/>
+            
+            <Label Text="Livestock Colour" HorizontalOptions="Start"/>
+            <Entry x:Name="LivestockColour2" IsReadOnly="True"
+                   Placeholder="Colour" 
+                   WidthRequest="400"
+                   BackgroundColor="AntiqueWhite"/>
+
+
+            <Label Text="Product"/>
+            <Entry x:Name="Milk2" IsReadOnly="True"
+                   Placeholder="Enter Product" 
                    BackgroundColor="AntiqueWhite"/>
             <Button Text="Delete" 
                     Clicked="DeleteBtn_Click"/>
@@ -132,5 +156,5 @@
               Text="Reset"/>
         </Grid>
     </VerticalStackLayout>
-
+</ScrollView>
 </ContentPage>
