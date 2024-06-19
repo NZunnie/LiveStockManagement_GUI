@@ -2,29 +2,33 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.SearchPage"
-             Title="SearchPage">
+             Title="Search">
     <ScrollView>
-        <Grid Margin="0,30" Padding ="50,0,50,30" ColumnDefinitions="*,*" ColumnSpacing="50" HorizontalOptions="Center" 
-       RowDefinitions="60,*" RowSpacing="20" VerticalOptions="StartAndExpand" BackgroundColor= "#add7b1">
+        <Grid Margin="0,30" Padding ="50,0,50,30" 
+              ColumnDefinitions="*,*" ColumnSpacing="50" HorizontalOptions="Center" 
+              RowDefinitions="60,*" RowSpacing="20" VerticalOptions="StartAndExpand"
+              BackgroundColor= "#add7b1">
 
             <Grid.Resources>
                 <Style TargetType="Label">
                     <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                    <Setter Property="FontSize" Value="Small"/>
+                    <Setter Property="FontSize" Value="18"/>
                     <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
-                    <Setter Property="Margin" Value="10"/>
-                    <Setter Property="Padding" Value="15, 0"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Padding" Value="10, 0"/>
                 </Style>
                 <Style TargetType="Button">
                     <Setter Property="Margin" Value="10"/>
                     <Setter Property="Padding" Value="15, 5"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="TextColor" Value="AntiqueWhite"/>
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 </Style>
                 <Style TargetType="Picker">
                     <Setter Property="Margin" Value="10"/>
                     <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
-                    <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                     <Setter Property="TitleColor" Value="#1A4D2E"/>
-                    <Setter Property="MinimumWidthRequest" Value="400"/>
                     <Setter Property="FontSize" Value="16"/>
                 </Style>
                 <Style TargetType="Entry">
@@ -37,18 +41,22 @@
                     <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                     <Setter Property="Margin" Value="10"/>
                 </Style>
-
             </Grid.Resources>
 
             <!-- First Cell (Row 0, Column 0): title -->
 
             <Grid Grid.Row="0" Column="0" ColumnSpan="2" >
-                
                 <HorizontalStackLayout HorizontalOptions="Center">
-                    <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50" Margin="0,10,0,0"/>
+                    <Image Source="logo_circle.png" 
+                           HeightRequest="50" 
+                           WidthRequest="50" 
+                           Margin="0,10,0,0"/>
                     <Label 
                         Text="Search Livestock" 
-                        FontSize="30" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
+                        FontSize="30" 
+                        FontAttributes="Bold" 
+                        TextColor="#1A4D2E" 
+                        BackgroundColor ="Transparent"/>
                 </HorizontalStackLayout>
             </Grid>
 
@@ -57,43 +65,67 @@
             <Grid Grid.Row="1" Grid.Column="0"  >
                 <VerticalStackLayout>
                     <Frame BackgroundColor="#1A4D2E">
-                    <Label Text="Search"  WidthRequest="400"
-                     FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
-                        </Frame>
+                    <Label Text="Search"  
+                           WidthRequest="400" 
+                           Padding="15,0"
+                           FontSize="20" 
+                           FontAttributes="Bold" 
+                           BackgroundColor="#1A4D2E" 
+                           TextColor="AntiqueWhite"/>
+                    </Frame>
                     <Picker x:Name="LivestockPicker"
-                     Title="Select Livestock type" 
-                     SelectedIndexChanged="OnLivestockTypeSelectionChange">
+                            Title="Select Livestock type" 
+                            SelectedIndexChanged="OnLivestockTypeSelectionChange"
+                            WidthRequest="400">
                     </Picker>
-                    <Picker x:Name="LivestockColourPicker" 
-                    Title="Select Livestock Colour (Black/Red/White/All)" 
-                    SelectedIndexChanged="OnLivestockTypeSelectionChange">
+                    <Picker x:Name="LivestockColourPicker"
+                            Title="Select Livestock Colour (Black/Red/White/All)" 
+                            SelectedIndexChanged="OnLivestockTypeSelectionChange"
+                            WidthRequest="400">    
                     </Picker>
                     <Button Clicked="SearchBtn_click"
-                    Text="OK" 
-                    HorizontalOptions="FillAndExpand" />
-                    <Button 
-                    Clicked="ResetClicked" 
-                    Text="Reset" 
-                    HorizontalOptions="FillAndExpand" />
-
+                            Text="OK"  />
+                    <Button Clicked="ResetClicked" 
+                            Text="Reset" />
                 </VerticalStackLayout>
             </Grid>
 
-
             <!-- Third Cell (Row 1, Column 2): Result -->
 
-            <Grid Grid.Row="1" Grid.Column="1"  >
-                <VerticalStackLayout>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <VerticalStackLayout >
                     <Frame BackgroundColor="#1A4D2E">
-                    <Label Text="Result" WidthRequest="400"
-                FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
-                     </Frame>
-                    <Frame>
-                    <Label x:Name="SearchResult" HeightRequest="200"/>
+                        <Label Text="Result" 
+                               WidthRequest="400" 
+                               Padding="15,0"
+                               FontSize="20" 
+                               FontAttributes="Bold" 
+                               BackgroundColor="#1A4D2E" 
+                               TextColor="AntiqueWhite"/>
                     </Frame>
-                    <Image Source="logo_green.png" HeightRequest="100" WidthRequest="220"
-                HorizontalOptions="EndAndExpand" Margin="10" />
-
+                    <Frame>
+                        <Label x:Name="TotalCountLabel" />
+                    </Frame>
+                    <Frame>
+                        <Label x:Name="PercentageLabel" />
+                    </Frame>
+                    <Frame>
+                        <Label x:Name="DailyTaxLabel" />
+                    </Frame>
+                    <Frame>
+                        <Label x:Name="ProfitLabel" />
+                    </Frame>
+                    <Frame>
+                        <Label x:Name="AverageWeightLabel" />
+                    </Frame>
+                    <Frame>
+                        <Label x:Name="TotalProduceLabel" />
+                    </Frame>
+                    <Image Source="logo_green.png"
+                           HeightRequest="100" 
+                           WidthRequest="220"
+                           HorizontalOptions="EndAndExpand" 
+                           Margin="10"/>
                 </VerticalStackLayout>
             </Grid>
         </Grid>

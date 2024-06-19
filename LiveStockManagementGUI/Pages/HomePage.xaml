@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.HomePage"
-             Title="Home">
+             Title="LiveStock Management System">
     <Border Margin ="40,40" 
             BackgroundColor= "#add7b1"
             StrokeShape="Rectangle 10">
@@ -21,48 +21,48 @@
         </Border.Resources>
         
         <StackLayout>
-            <!-- Header Grid for column titles -->
-            <Grid  Grid.Row="0" Column="0" ColumnSpan="2" BackgroundColor="#add7b1">
+             <!--Header Section-->  
+            <Grid  Grid.Row="0" Column="0" ColumnSpan="2" 
+                   BackgroundColor="#add7b1">
                 <HorizontalStackLayout HorizontalOptions="Center">
-                    <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
+                    <Image Source="logo_circle.png" 
+                           HeightRequest="50" 
+                           WidthRequest="50"/>
                     <Label Padding="15"
-                     Text="Livestock Management System" 
-                     FontSize="30" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
+                           Text="Livestock Management System" 
+                           FontSize="30" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
                 </HorizontalStackLayout>
             </Grid>
 
-            
-            <Grid Margin="20" ColumnDefinitions="*,*" ColumnSpacing="20" VerticalOptions="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <!-- Image Section -->
-                <Image Source="report_logo.png" HeightRequest="300" WidthRequest="300"
-                    Grid.Column="0" 
-                    HorizontalOptions="Center" 
-                    VerticalOptions="CenterAndExpand"/>
+            <!--Main Section I: Image & Buttons-->
+            <Grid Margin="20" ColumnDefinitions="*,*" ColumnSpacing="20" 
+                  RowDefinitions="Auto,*" VerticalOptions="Center" >
+                
+                <Image Source="report_logo.png" 
+                       HeightRequest="300" 
+                       WidthRequest="300"
+                       Grid.Column="0" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="CenterAndExpand"/>
 
-                <!-- Buttons -->
                 <StackLayout Grid.Column="1" 
-                     Orientation="Vertical"  
-                     VerticalOptions="End">
+                             Orientation="Vertical" VerticalOptions="End">
                     <Button Text="Data List" 
-                    Clicked="DataListButton_Clicked" 
-                    Margin="10"/>
+                            Clicked="DataListButton_Clicked" 
+                            Margin="10"/>
                     <Button Text="Report" 
-                    Clicked="ReportButton_Clicked"
-                    Margin="10"/>
+                            Clicked="ReportButton_Clicked"
+                            Margin="10"/>
                     <Button Text="Search"
-                    Clicked="SearchButton_Clicked"
-                    Margin="10"/>
+                            Clicked="SearchButton_Clicked"
+                            Margin="10"/>
                     <Button Text="Management" 
-                    Clicked="ManagementButton_Clicked"
-                    Margin="10"/>
+                            Clicked="ManagementButton_Clicked"
+                            Margin="10"/>
                 </StackLayout>
             </Grid>
 
-
+            <!--Main Section II: Text-->
             <Grid>
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <Label Margin="30"
@@ -73,3 +73,4 @@
         </StackLayout>
     </Border>
 </ContentPage>
+

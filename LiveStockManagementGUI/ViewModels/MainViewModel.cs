@@ -1,7 +1,7 @@
 ﻿using LivestockManagement;
 
 namespace LiveStockManagementGUI.ViewModels;
-//use dependency injection (DI) to make this view model available throught the app
+
 public class MainViewModel
 {
     public ObservableCollection<Livestock> Livestocks { get; set; }
@@ -22,10 +22,14 @@ public class MainViewModel
 
     }
 
-    #region Statistic -Report page 
+    #region General Statistic -Report page 
     public string GetTotalWeight()
     {
         return $"Total Weight of Livestock: {Livestocks.Sum(x => x.Weight)}";
+    }
+    public string AveWeight()
+    {
+        return $"Average weight of all livestocks: {Livestocks.Average(x => x.Weight):F2} kg";
     }
     public string MonthlyTax()
     {
@@ -36,24 +40,19 @@ public class MainViewModel
     {
         return $"Farm daily profit: ${Livestocks.Sum(x => CalculateDailyProfit(x)):F2}";
     }
-    public string AveWeight()
-    {
-        return $"Average weight of all livestocks: {Livestocks.Average(x => x.Weight):F2} kg";
-    }
+    #endregion
 
-    //Display current profit
+    #region Current Statistic -Report page
     public string TotalCowProfit()
     {
         double totalCowProfit = Livestocks.Where(x => x is Cow).Sum(CalculateDailyProfit);
         return $"Current daily profit of all cows: \n${totalCowProfit:F2}";
     }
-
     public string TotalSheepProfit()
     {
         double totalSheepProfit = Livestocks.Where(x => x is Sheep).Sum(CalculateDailyProfit);
         return $"Current daily profit of all sheep: \n${totalSheepProfit:F2}";
     }
-    //Based on current livestock data
     public string AveCowProfit()
     {
         int totalCowCount = Livestocks.Count(x => x is Cow);
@@ -61,7 +60,6 @@ public class MainViewModel
         double averageCowProfit = totalCowCount > 0 ? totalCowProfit / totalCowCount : 0;
         return $"On average, a single cow makes daily profit: \n${averageCowProfit:F2}";
     }
-
     public string AveSheepProfit()
     {
         int totalSheepCount = Livestocks.Count(x => x is Sheep);
@@ -69,10 +67,9 @@ public class MainViewModel
         double averageSheepProfit = totalSheepCount > 0 ? totalSheepProfit / totalSheepCount : 0;
         return $"On average, a single sheep makes daily profit: \n${averageSheepProfit:F2}";
     }
-
-
     #endregion
 
+    #region Daily Profit -Report page / Search Page
     private double CalculateDailyProfit(Livestock livestock)
     {
         double income = livestock switch
@@ -87,8 +84,9 @@ public class MainViewModel
         double profit = income - cost - tax;
         return profit;
     }
+    #endregion
 
-    #region InvestmentForecast  -Report Page
+    #region Estimate Investment  -Report Page
     public string EstimateInvestment(string type, int quantity)
     {
         double estimatedDailyProfit;
@@ -113,13 +111,12 @@ public class MainViewModel
         {
             return $"Invalid livestock type: {type}";
         }
-
         return $"For {quantity} {type}s \nestimated daily profit: \n${estimatedDailyProfit:F2}";
-
     }
     #endregion
 
-    #region Search Page
+    #region Search by type & color -Search Page
+  
     public List<Livestock> GetFilteredLivestock(string type, string color)
     {
         return Livestocks.Where(x => (type == "All" || x.GetType().Name == type) &&
@@ -137,19 +134,13 @@ public class MainViewModel
         double totalProfit = selectedLivestock.Sum(x => CalculateDailyProfit(x));
         double averageWeight = selectedLivestock.Average(x => x.Weight);
         double totalTax = selectedLivestock.Sum(x => x.Weight * GovernmentTax);
-        
+
         double totalProduce = 0;
-
-
-
 
         if (selectedLivestock.Count == 0)
         {
             return "No livestock found";
         }
-
-
-
 
         if (selectedLivestock.All(x => x is Cow))
         {
@@ -162,27 +153,17 @@ public class MainViewModel
 
         double percentage = totalLivestock > 0 ? (totalCount / (double)totalLivestock) * 100 : 0;
 
-        return $"Total number of selected livestock: {totalCount}\n" + 
-               $"Percentage of selected livestock: {percentage:F2}%\n" + 
+        return $"Total number of selected livestock: {totalCount}\n" +
+               $"Percentage of selected livestock: {percentage:F2}%\n" +
                $"Daily tax of selected livestock: ${totalTax:F2}\n" +
                $"Profit per day: ${totalProfit:F2}\n" +
                $"Average weight: {averageWeight:F2} kg\n" +
                $"Total produce amount: {totalProduce:F2} kg";
     }
 
-
     #endregion
 
 
-
-
-    public string QueryByLivestockType(string type)
-    {
-        List<Livestock> sts = Livestocks.Where(x => x.GetType().Name.Equals(type)).ToList();
-        string results = $"{$"Number of {type}:",-30}{sts.Count}\n"; // first line of result
-        results += $"{"Average weight of livestock:",-30}{sts.Average(x => x.Weight)}";
-        return results;
-    }
     #region
 
     public async Task<bool> InsertLivestockAsync(Livestock livestock)
