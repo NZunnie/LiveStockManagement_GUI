@@ -130,13 +130,13 @@ public class MainViewModel
         int totalSheep = Livestocks.Count(x => x is Sheep);
         int totalLivestock = totalCows + totalSheep;
 
+        double percentage = totalLivestock > 0 ? (totalCount / (double)totalLivestock) * 100 : 0;
         double totalWeight = selectedLivestock.Sum(x => x.Weight);
         double totalProfit = selectedLivestock.Sum(x => CalculateDailyProfit(x));
         double averageWeight = selectedLivestock.Average(x => x.Weight);
         double totalTax = selectedLivestock.Sum(x => x.Weight * GovernmentTax);
-
+        
         double totalProduce = 0;
-
         if (selectedLivestock.Count == 0)
         {
             return "No livestock found";
@@ -151,12 +151,10 @@ public class MainViewModel
             totalProduce = selectedLivestock.OfType<Sheep>().Sum(x => x.Milk);
         }
 
-        double percentage = totalLivestock > 0 ? (totalCount / (double)totalLivestock) * 100 : 0;
-
         return $"Total number of selected livestock: {totalCount}\n" +
                $"Percentage of selected livestock: {percentage:F2}%\n" +
                $"Daily tax of selected livestock: ${totalTax:F2}\n" +
-               $"Profit per day: ${totalProfit:F2}\n" +
+               $"Daily profit: ${totalProfit:F2}\n" +
                $"Average weight: {averageWeight:F2} kg\n" +
                $"Total produce amount: {totalProduce:F2} kg";
     }
