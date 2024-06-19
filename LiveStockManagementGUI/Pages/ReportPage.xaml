@@ -81,7 +81,7 @@
                        BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
                     </Frame>
                     <Image Source="report_logo.png" HeightRequest="210" WidthRequest="210" />
-                    
+
                 </VerticalStackLayout>
             </Grid>
 

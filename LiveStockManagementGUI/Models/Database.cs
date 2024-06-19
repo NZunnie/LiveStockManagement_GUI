@@ -7,7 +7,7 @@ namespace LiveStockManagementGUI.Models;
 
 public class Database
 {
-    private readonly SQLiteConnection _connection; //SQLiteConnection 객체를 저장
+    private readonly SQLiteConnection _connection; //SQLiteConnection
     public Database()
     {
         string dbName = "FarmDataOriginal.db";
@@ -34,21 +34,16 @@ public class Database
         return livestocks;
     }
     public async Task<int> InsertItemAsync(Livestock item)
-    /*public int InsertItem(Livestock item)*/ //insert super class "Livestock" , insert Cow or Sheep
     {
         return await Task.Run(() => _connection.Insert(item));
-        //return _connection.Insert(item);
+       
     }
     public async Task<int> DeleteItemAsync(Livestock livestockId)
-    //public int DeleteItem(Livestock livestockId)
     {
-        return await Task.Run(() => _connection.Delete(livestockId));
-        //return _connection.Delete(livestockId);
+        return await Task.Run(() => _connection.Delete(livestockId));      
     }
     public async Task<int> UpdateItemAsync(Livestock item)
-    //public int UpdateItem(Livestock item)
     {
         return await Task.Run(() => _connection.Update(item));
-        //return _connection.Update(item);
     }
 }
