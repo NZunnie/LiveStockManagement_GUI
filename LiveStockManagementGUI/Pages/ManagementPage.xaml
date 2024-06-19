@@ -21,7 +21,7 @@
                 </HorizontalStackLayout>
             </Grid>
           </Border>
-        <Picker x:Name="LivestockPicker"
+          <Picker x:Name="LivestockPicker"
            Title="Select Insert/Update/Delete function" 
            Grid.Row="1" Grid.Column="0"
            BackgroundColor="#add7b1"
@@ -36,7 +36,7 @@
                     <x:String>Delete</x:String>
                 </x:Array>
             </Picker.ItemsSource>
-        </Picker>
+          </Picker>
 
         <StackLayout x:Name="InsertLayout" IsVisible="False" Spacing="3">
             <Picker x:Name="LivestockType" 
