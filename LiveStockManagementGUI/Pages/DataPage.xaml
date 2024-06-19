@@ -17,7 +17,7 @@
                     <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
                     <Label Padding="15"
                            Text="Livestock Data" 
-                           FontSize="30" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
+                           FontSize="22" FontAttributes="Bold" TextColor="#1A4D2E" BackgroundColor ="Transparent"/>
                 </HorizontalStackLayout>
                 
             </Grid>
@@ -29,11 +29,10 @@
                 <Label Grid.Column="4" Text="Weight (kg)" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" FontSize="15"/>
                 <Label Grid.Column="5" Text="Cost ($)" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" FontSize="15"/>
             </Grid>
-        <CollectionView 
+            <CollectionView 
             BackgroundColor= "#add7b1"
             x:Name="DataCollectionView" >
-
-            <CollectionView.ItemTemplate>
+                <CollectionView.ItemTemplate>
                 <DataTemplate>
                         <!--<Border BackgroundColor= "#add7b1" StrokeShape="Rectangle ">-->
                         <Border BackgroundColor= "#e6f3e8" StrokeShape="Rectangle " Margin="30,0" >
@@ -48,8 +47,8 @@
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            </CollectionView>
-</StackLayout>
+          </CollectionView>
+        </StackLayout>
     </Border>
     </ScrollView>
 </ContentPage>

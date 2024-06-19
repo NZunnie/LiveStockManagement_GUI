@@ -3,26 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.ManagementPage"
              Title="ManagementPage">
-
-    <VerticalStackLayout
-           Margin="0,30" 
-           MaximumWidthRequest="300" 
+    
+        <VerticalStackLayout
+           Margin="0,20" 
+           MaximumWidthRequest="400" 
            Spacing="5">
-        <Grid Grid.Row="0" Column="0" ColumnSpan="2" BackgroundColor="#1A4D2E">
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
-                <Label 
+        <Border BackgroundColor="#1A4D2E" StrokeShape="RoundRectangle 5">
+            <Grid Grid.Row="0" 
+              Column="0" 
+              ColumnSpan="2" 
+              BackgroundColor="#1A4D2E">
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
+                    <Label 
                 Text="Insert/Update/Delete Function" 
-                FontSize="15" FontAttributes="Bold" TextColor="AntiqueWhite" BackgroundColor ="Transparent" Margin ="5,10" />
-            </HorizontalStackLayout>
-        </Grid>
+                FontSize="20" FontAttributes="Bold" TextColor="AntiqueWhite" BackgroundColor ="Transparent" Margin ="5,10" />
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
         <Picker x:Name="LivestockPicker"
            Title="Select Insert/Update/Delete function" 
            Grid.Row="1" Grid.Column="0"
            BackgroundColor="#add7b1"
            HorizontalOptions="Start" 
            TitleColor="#1A4D2E"
-           WidthRequest="300" 
+           WidthRequest="400" 
            SelectedIndexChanged="OnLivestockTypeSelectionChange">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -32,36 +37,13 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-        <!--<Grid ColumnDefinitions="2*,1*" ColumnSpacing="10">
-            <Entry x:Name="LivestockType" 
-             Grid.Row="1" 
-             Placeholder="Enter Livestock Type(Cow/Sheep)"/>
-        </Grid>
-        <Grid  Grid.Row="2" 
-         ColumnDefinitions="2*,1*"
-         ColumnSpacing="10">
-            <Entry x:Name="Cost " Placeholder="Enter Livestock Cost"/>
-        </Grid>
-        
-        <Grid  Grid.Row="2" 
-         ColumnDefinitions="2*,1*"
-         ColumnSpacing="10">
-            <Entry x:Name="Weight " Placeholder="Enter Livestock Weight"/>
-            </Grid>
-        
-        <Grid  Grid.Row="2" 
-        ColumnDefinitions="2*,1*"
-        ColumnSpacing="10">
-            <Entry x:Name="Colour " Placeholder="Enter Livestock Colour(black/Red/White)"/>
-            <Button Grid.Column="1"
-         Clicked="LivestockBtn_click" 
-         Text="Ok"/>
-        </Grid>-->
-        <StackLayout x:Name="InsertLayout" IsVisible="False" Spacing="10">
+
+        <StackLayout x:Name="InsertLayout" IsVisible="False" Spacing="3">
             <Picker x:Name="LivestockType" 
-                    Title="Select Livestock Type (Cow/Sheep)"  
+                    Title="Select Livestock Type (Cow/Sheep)" 
+                    HorizontalOptions="Start"
                     BackgroundColor="#add7b1" 
-                    WidthRequest="300">
+                    WidthRequest="400">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Cow</x:String>
@@ -69,17 +51,23 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
+            <Label Text="Enter Livestock Cost" />
             <Entry x:Name="Cost" 
                    Placeholder="Enter Livestock Cost" 
-                   WidthRequest="300" 
+                   WidthRequest="400"                   
+                   HorizontalOptions="Start"
                    BackgroundColor="AntiqueWhite"/>
+            <Label Text="Enter Livestock Weight" />
             <Entry x:Name="Weight" 
                    Placeholder="Enter Livestock Weight" 
+                   WidthRequest="400" 
+                   HorizontalOptions="Start"
                    BackgroundColor="AntiqueWhite"/>
             <Picker x:Name="LivestockColour" 
                         Title="Select Livestock Colour (Black/Red/White)" 
+                    HorizontalOptions="End"
                         BackgroundColor="#add7b1"
-                        WidthRequest="300">
+                        WidthRequest="400">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Black</x:String>
@@ -88,26 +76,33 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Entry x:Name="Milk" Placeholder="Enter Product" BackgroundColor="AntiqueWhite"/>
+            <Label Text="Enter Product" />
+            <Entry x:Name="Milk" 
+                   Placeholder="Enter Product" 
+                     WidthRequest="400" 
+                     HorizontalOptions="Start"
+                   BackgroundColor="AntiqueWhite"/>
             <Button Text="Insert" Clicked="InsertBtn_Click"/>
         </StackLayout>
 
-        <StackLayout x:Name="UpdateLayout" IsVisible="False" Spacing="10">
+        <StackLayout x:Name="UpdateLayout" IsVisible="False" Spacing="1">
             <Entry x:Name="UpdateLivestockId" 
                    Placeholder="Enter Livestock Id" 
                    BackgroundColor="AntiqueWhite"/>
-            <Button Text="Details" Clicked="DetailsBtn_Click"/>
+            <Button Text="Details" Clicked="DetailsBtn_Click" WidthRequest="400"/>
+            <Label Text="Livestock Cost" HorizontalOptions="Start"/>
             <Entry x:Name="Cost1" 
                    Placeholder="Enter Livestock Cost" 
-                   WidthRequest="300" 
+                   WidthRequest="400"
                    BackgroundColor="AntiqueWhite"/>
+            <Label Text="Livestock Weight" />
             <Entry x:Name="Weight1" 
                    Placeholder="Enter Livestock Weight" 
                    BackgroundColor="AntiqueWhite"/>
             <Picker x:Name="LivestockColour1" 
             Title="Select Livestock Colour (Black/Red/White)" 
             BackgroundColor="#add7b1"
-            WidthRequest="300">
+            WidthRequest="400">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Black</x:String>
@@ -116,6 +111,7 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
+            <Label Text="Product" />
             <Entry x:Name="Milk1" 
                    Placeholder="Enter Product" 
                    BackgroundColor="AntiqueWhite"/>
@@ -123,6 +119,7 @@
         </StackLayout>
 
         <StackLayout x:Name="DeleteLayout" IsVisible="False" Spacing="10">
+            <Label Text="Enter Livestock Id" />
             <Entry x:Name="DeleteLivestockId" 
                    Placeholder="Enter Livestock ID to Delete"
                    BackgroundColor="AntiqueWhite"/>
@@ -135,4 +132,5 @@
               Text="Reset"/>
         </Grid>
     </VerticalStackLayout>
+
 </ContentPage>

@@ -22,7 +22,7 @@
         
         <StackLayout>
             <!-- Header Grid for column titles -->
-            <Grid  Grid.Row="0" Column="0" ColumnSpan="2" BackgroundColor="#add7b1" Margin="30">
+            <Grid  Grid.Row="0" Column="0" ColumnSpan="2" BackgroundColor="#add7b1">
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <Image Source="logo_circle.png" HeightRequest="50" WidthRequest="50"/>
                     <Label Padding="15"
