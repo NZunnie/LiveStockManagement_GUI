@@ -14,7 +14,7 @@ public partial class SearchPage : ContentPage
         LivestockPicker.ItemsSource = new string[] { "Cow", "Sheep" };
         LivestockColourPicker.ItemsSource = new string[] { "Black", "Red", "White", "All" };
     }
-
+    #region Selection
     private void OnLivestockTypeSelectionChange(object sender, EventArgs e)
     {
         if (LivestockPicker.SelectedIndex == -1 || LivestockColourPicker.SelectedIndex == -1)
@@ -25,6 +25,8 @@ public partial class SearchPage : ContentPage
         var selectedColor = LivestockColourPicker.SelectedItem.ToString();
         var selectedLivestock = vm.GetFilteredLivestock(selectedType, selectedColor);
     }
+    #endregion
+
     #region Search Button
     private void SearchBtn_click(object sender, EventArgs e)
     {
@@ -55,6 +57,7 @@ public partial class SearchPage : ContentPage
         TotalProduceLabel.Text = resultLines[5];
     }
     #endregion
+
     #region Reset Button
     private void ResetClicked(object sender, EventArgs e)
     {

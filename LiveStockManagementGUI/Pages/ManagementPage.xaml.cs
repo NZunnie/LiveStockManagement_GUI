@@ -22,7 +22,7 @@ namespace LiveStockManagementGUI.Pages
             _database = new Database(); // Initialize  database here
             LivestockPicker.ItemsSource = new string[] { "Insert", "Update", "Delete" };
         }
-
+        #region Select function
         private void OnLivestockTypeSelectionChange(object sender, EventArgs e)
         {
             var selectedOption = LivestockPicker.SelectedItem.ToString();
@@ -48,7 +48,9 @@ namespace LiveStockManagementGUI.Pages
 
 
         }
+        #endregion
 
+        #region Insert function
         private async void InsertBtn_Click(object sender, EventArgs e)
         {
             // Implement the logic for inserting a livestock record
@@ -128,6 +130,9 @@ namespace LiveStockManagementGUI.Pages
             }
 
             }
+        #endregion
+
+        #region Update function
         private async void DetailsBtn_Click(object sender, EventArgs e)
         {
             if (int.TryParse(UpdateLivestockId.Text, out int Id))
@@ -187,34 +192,7 @@ namespace LiveStockManagementGUI.Pages
                     await DisplayAlert("Invalid Input", "Please enter a valid positive milk value", "OK");
                     return;
                 }
-                #region
-                // Update livestock details
-                //existingLivestock.Id = Id;
-                //existingLivestock.Colour = colour;
-                //existingLivestock.Cost = cost;
-                //existingLivestock.Weight = weight;
-                //existingLivestock.Milk = milk;
-
-                // Update the record in the database
-                //    var update = _database.UpdateItem(existingLivestock);
-                //    if (update > 0)
-                //    {
-                //        DisplayAlert("Success", "Record updated successfully", "OK");
-
-                //        // Refresh the changes
-                //        var index = vm.Livestocks.IndexOf(existingLivestock);
-                //        vm.Livestocks[index] = existingLivestock;
-                //    }
-                //    else
-                //    {
-                //        DisplayAlert("Failure", "Failed to update record", "OK");
-                //    }
-                //}
-                //else
-                //{
-                //    DisplayAlert("Invalid Input", "Please enter a valid livestock ID", "OK");
-                //}
-                #endregion
+              
                 var update = await vm.UpdateLivestockAsync(Id, colour, cost, weight, milk);
 
                 if (update)
@@ -227,6 +205,9 @@ namespace LiveStockManagementGUI.Pages
                 }
             }
         }
+        #endregion
+
+        #region Delete function
         private async void DetailsBtn_Click1(object sender, EventArgs e)
         {
             if (int.TryParse(DeleteLivestockId.Text, out int Id))
@@ -296,6 +277,9 @@ namespace LiveStockManagementGUI.Pages
             }
         }
 
+        #endregion
+
+        #region Reset Button
         private void ResetBtn_click(object sender, EventArgs e)
         {
            
@@ -318,5 +302,6 @@ namespace LiveStockManagementGUI.Pages
          
 
         }
+        #endregion
     }
 }

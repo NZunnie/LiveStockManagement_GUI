@@ -154,15 +154,14 @@ public class MainViewModel
         return $"Total number of selected livestock: {totalCount}\n" +
                $"Percentage of selected livestock: {percentage:F2}%\n" +
                $"Daily tax of selected livestock: ${totalTax:F2}\n" +
-               $"Daily profit: ${totalProfit:F2}\n" +
+               $"Daily Profit: ${totalProfit:F2}\n" +
                $"Average weight: {averageWeight:F2} kg\n" +
                $"Total produce amount: {totalProduce:F2} kg";
     }
 
     #endregion
 
-
-    #region
+    #region Insert/ Update/ Delete- Management Page
 
     public async Task<bool> InsertLivestockAsync(Livestock livestock)
     {

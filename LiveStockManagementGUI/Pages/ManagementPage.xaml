@@ -38,6 +38,7 @@
             </Picker.ItemsSource>
           </Picker>
 
+            <!--Insert Section-->
         <StackLayout x:Name="InsertLayout" IsVisible="False" Spacing="3">
             <Picker x:Name="LivestockType" 
                     Title="Select Livestock Type (Cow/Sheep)" 
@@ -87,7 +88,8 @@
             <Button Text="Insert" Clicked="InsertBtn_Click"/>
         </StackLayout>
 
-        <StackLayout x:Name="UpdateLayout" IsVisible="False" Spacing="5">
+            <!--Update Section-->
+            <StackLayout x:Name="UpdateLayout" IsVisible="False" Spacing="5">
             <Entry x:Name="UpdateLivestockId" 
                    Placeholder="Enter Livestock Id" 
                    BackgroundColor="AntiqueWhite"/>
@@ -124,7 +126,8 @@
             <Button Text="Update" Clicked="UpdateBtn_Click"/>
         </StackLayout>
 
-        <StackLayout x:Name="DeleteLayout" IsVisible="False" Spacing="3">
+            <!--Delete Section-->
+            <StackLayout x:Name="DeleteLayout" IsVisible="False" Spacing="3">
             <Label Text="Enter Livestock Id" />
                 <Entry x:Name="DeleteLivestockId" 
                    Placeholder="Enter Livestock ID to Delete"
