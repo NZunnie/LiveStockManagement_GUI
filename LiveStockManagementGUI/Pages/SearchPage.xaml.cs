@@ -5,34 +5,15 @@ public partial class SearchPage : ContentPage
     private MainViewModel vm;
     public SearchPage(MainViewModel vm)
     {
-
         InitializeComponent();
 
-        vm = new MainViewModel();
         this.vm = vm;
         BindingContext = vm;
 
         // Set the ItemsSource for the Picker
         LivestockPicker.ItemsSource = new string[] { "Cow", "Sheep" };
         LivestockColourPicker.ItemsSource = new string[] { "Black", "Red", "White", "All" };
-
-
     }
-
-    
-
-
-    //private void OnLivestockTypeSelectionChange(object sender, EventArgs e)
-    //{
-    //    var Picker = (Picker)sender;
-    //    int selectedIndex = Picker.SelectedIndex;
-    //    if (selectedIndex == -1) return;
-    //    string type = (string)Picker.ItemsSource[selectedIndex];
-    //    //if (int.TryParse(type, out int quantity))
-    //    //{
-    //    //    //EstimateInvestment.Text = vm.EstimateInvestment(type, quantity);
-    //    //}
-    //}
 
     private void OnLivestockTypeSelectionChange(object sender, EventArgs e)
     {
@@ -40,13 +21,11 @@ public partial class SearchPage : ContentPage
         {
             return;
         }
-
         var selectedType = LivestockPicker.SelectedItem.ToString();
         var selectedColor = LivestockColourPicker.SelectedItem.ToString();
         var selectedLivestock = vm.GetFilteredLivestock(selectedType, selectedColor);
-
     }
-
+    #region Search Button
     private void SearchBtn_click(object sender, EventArgs e)
     {
         if (LivestockPicker.SelectedIndex == -1 || LivestockColourPicker.SelectedIndex == -1)
@@ -64,16 +43,30 @@ public partial class SearchPage : ContentPage
             DisplayAlert("No Results", "No livestock found with the selected type and color. Please try again.", "OK");
             return;
         }
+
         var result = vm.GetLivestockSearch(selectedLivestock);
 
-        SearchResult.Text = result;
+        var resultLines = result.Split('\n');
+        TotalCountLabel.Text = resultLines[0];
+        PercentageLabel.Text = resultLines[1];
+        DailyTaxLabel.Text = resultLines[2];
+        ProfitLabel.Text = resultLines[3];
+        AverageWeightLabel.Text = resultLines[4];
+        TotalProduceLabel.Text = resultLines[5];
     }
-
-
+    #endregion
+    #region Reset Button
     private void ResetClicked(object sender, EventArgs e)
     {
         LivestockPicker.SelectedIndex = -1;
         LivestockColourPicker.SelectedIndex = -1;
-        SearchResult.Text = string.Empty;
+
+        TotalCountLabel.Text = string.Empty;
+        PercentageLabel.Text = string.Empty;
+        DailyTaxLabel.Text = string.Empty;
+        ProfitLabel.Text = string.Empty;
+        AverageWeightLabel.Text = string.Empty;
+        TotalProduceLabel.Text = string.Empty;
     }
+    #endregion
 }

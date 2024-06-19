@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiveStockManagementGUI.Pages.ReportPage"
-             Title="ReportPage">
+             Title="Report">
     <ScrollView>
-        <Grid Margin="0,30" ColumnDefinitions="*,*,*" ColumnSpacing="20" HorizontalOptions="Center" MinimumHeightRequest="500"
-          RowDefinitions="Auto,Auto, *"   RowSpacing="20" VerticalOptions="StartAndExpand" BackgroundColor= "#add7b1">
+        <Grid Margin="0,30" ColumnDefinitions="*,*,*" ColumnSpacing="20" HorizontalOptions="Center" 
+              RowDefinitions="Auto,Auto, *"  RowSpacing="20" VerticalOptions="StartAndExpand"
+              BackgroundColor= "#add7b1"
+              MinimumHeightRequest="500">
 
             <Grid.Resources>
                 <Style TargetType="Label">
@@ -14,12 +16,14 @@
                     <Setter Property="TextColor" Value="#1A4D2E"/>
                     <Setter Property="VerticalTextAlignment" Value="Center"/>
                     <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
-                    <Setter Property="Margin" Value="10,0,10,10"/>
+                    <Setter Property="Margin" Value="10,0,5,10"/>
                     <Setter Property="Padding" Value="15, 5"/>
                 </Style>
                 <Style TargetType="Button">
                     <Setter Property="Margin" Value="10"/>
                     <Setter Property="Padding" Value="15, 5"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="TextColor" Value="AntiqueWhite"/>
                 </Style>
                 <Style TargetType="Picker">
                     <Setter Property="Margin" Value="10"/>
@@ -39,24 +43,35 @@
             </Grid.Resources>
 
             <!-- First Cell (Row 0, Column 0): General Statistics -->
+            
             <Grid Grid.Row="0" Grid.Column="0" Margin="30,20,0,0"  >
                 <VerticalStackLayout Spacing="10">
                 <Frame BackgroundColor="#1A4D2E">
                     <Label Text="General Statistics" 
-                        FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                           FontAttributes="Bold" 
+                           BackgroundColor="#1A4D2E" 
+                           TextColor="AntiqueWhite"/>
                 </Frame>
                 <Frame>
-                    <Label x:Name="MonthTax" Text="{Binding MonthTax}" FontSize="18"/>
+                    <Label x:Name="MonthTax" 
+                           Text="{Binding MonthTax}" 
+                           FontSize="18"/>
                 </Frame>
                 <Frame>
-                    <Label x:Name="DayProfit" Text="{Binding DayProfit}" FontSize="18"/>
+                    <Label x:Name="DayProfit" 
+                           Text="{Binding DayProfit}" 
+                           FontSize="18"/>
                 </Frame>
                 <Frame>
-                    <Label x:Name="AveAllWeight" Text="{Binding AveAllWeight}" FontSize="18"/>
+                    <Label x:Name="AveAllWeight" 
+                           Text="{Binding AveAllWeight}" 
+                           FontSize="18"/>
                 </Frame>
             </VerticalStackLayout>
             </Grid>
+            
             <!-- Second Cell (Row 0, Column 1): Image -->
+            
             <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions ="Center" Margin="0, 20" >
                 <VerticalStackLayout>
                 <Frame BackgroundColor="#1A4D2E">
@@ -64,81 +79,95 @@
                        FontSize="20" FontAttributes="Bold"  HorizontalTextAlignment="Center"
                        WidthRequest="300"   
                        BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
-                    </Frame>
                     <Image Source="report_logo.png" HeightRequest="210" WidthRequest="210" />
-                
-                </VerticalStackLayout>
 
+                </VerticalStackLayout>
             </Grid>
 
             <!-- Third Cell (Row 0, Column 2): InvestForecast -->
+            
             <Grid Grid.Row="0" Grid.Column="2" RowSpan="2" Margin="0,20,30,0">
                 <VerticalStackLayout>
                     <Frame BackgroundColor="#1A4D2E">
                     <Label Text="Estimate Future Investment" 
-                        FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                           FontAttributes="Bold" 
+                           BackgroundColor="#1A4D2E" 
+                           TextColor="AntiqueWhite"/>
                     </Frame>
                     <Picker x:Name="LivestockPicker"
-                        Title="Select Livestock type" 
-                        BackgroundColor="AntiqueWhite"
-                        HorizontalOptions="Start" 
-                        TitleColor="#1A4D2E"
-                        WidthRequest="400" 
-                        SelectedIndexChanged="OnLivestockTypeSelectionChange">
+                            Title="Select Livestock type" 
+                            BackgroundColor="AntiqueWhite"
+                            HorizontalOptions="Start" 
+                            TitleColor="#1A4D2E"
+                            WidthRequest="400" 
+                            SelectedIndexChanged="OnLivestockTypeSelectionChange">
                     </Picker>
                     <Entry x:Name="Quentity" 
-                       Placeholder="Enter the quantity of investment animals:" 
-                       PlaceholderColor="Gray"
-                       BackgroundColor="AntiqueWhite" />
+                           Placeholder="Enter the quantity of investment animals:" 
+                           PlaceholderColor="Gray"
+                           BackgroundColor="AntiqueWhite" />
 
                     <Button Clicked="NumberEntryBtn_click"
-                        Text="OK" 
-                        HorizontalOptions="FillAndExpand" />
-                    
+                            Text="OK" 
+                            HorizontalOptions="FillAndExpand" />
+
                     <Label Text="Result : " 
-                        FontAttributes="Bold" BackgroundColor="Transparent" TextColor="#1A4D2E" />
+                           FontAttributes="Bold"
+                           BackgroundColor="Transparent" 
+                           TextColor="#1A4D2E" />
                     <Frame>
                     <Label x:Name="EstimateInvestment" 
-                       Text="{Binding EstimateInvestment}"
+                           Text="{Binding EstimateInvestment}"
                            HeightRequest="120"/>
                     </Frame>
-                    <Button 
-                        Clicked="ResetClicked" 
-                        Text="Reset" 
-                        HorizontalOptions="FillAndExpand" />
-
-
+                    <Button Clicked="ResetClicked" 
+                            Text="Reset" 
+                            HorizontalOptions="FillAndExpand" />
                 </VerticalStackLayout>
             </Grid>
 
             <!-- Fourth Cell (Row 1, Column 0): General Statistics -->
+
             <Grid Grid.Row="1" Grid.Column="0" ColumnSpan="2" Margin="30,0,0,30">
                 <VerticalStackLayout Spacing="10">
                     <Frame BackgroundColor="#1A4D2E">
-                    <Label Text="Current Livestock Statistics" 
-                            FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite" />
-                    </Frame>    
+                        <Label Text="Current Livestock Statistics" 
+                           FontAttributes="Bold" 
+                           BackgroundColor="#1A4D2E" 
+                           TextColor="AntiqueWhite" />
+                    </Frame>
                     <HorizontalStackLayout  >
                         <VerticalStackLayout >
-                        <Frame>
-                        <Label x:Name="TotalCow" Text="{Binding TotalCow}" FontSize="18" HorizontalOptions="FillAndExpand" />
-                        </Frame>
-                        <Frame>
-                            <Label x:Name="TotalSheep" Text="{Binding TotalSheep}" FontSize="18" HorizontalOptions="FillAndExpand" />
-                        </Frame>
-                    </VerticalStackLayout>
+                            <Frame>
+                                <Label x:Name="TotalCow" 
+                               Text="{Binding TotalCow}" 
+                               FontSize="18" 
+                               HorizontalOptions="FillAndExpand" />
+                            </Frame>
+                            <Frame>
+                                <Label x:Name="TotalSheep" 
+                               Text="{Binding TotalSheep}"
+                               FontSize="18" 
+                               HorizontalOptions="FillAndExpand" />
+                            </Frame>
+                        </VerticalStackLayout>
                         <VerticalStackLayout >
-                        <Frame>
-                            <Label x:Name="AveCow" Text="{Binding AveCow}" FontSize="18" HorizontalOptions="FillAndExpand" />
-                        </Frame>
-                        <Frame>
-                            <Label x:Name="AveSheep" Text="{Binding AveSheep}" FontSize="18" HorizontalOptions="FillAndExpand" />
-                        </Frame>
-                    </VerticalStackLayout>
+                            <Frame>
+                                <Label x:Name="AveCow" 
+                               Text="{Binding AveCow}" 
+                               FontSize="18" 
+                               HorizontalOptions="FillAndExpand" />
+                            </Frame>
+                            <Frame>
+                                <Label x:Name="AveSheep" 
+                               Text="{Binding AveSheep}" 
+                               FontSize="18" 
+                               HorizontalOptions="FillAndExpand" />
+                            </Frame>
+                        </VerticalStackLayout>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Grid>
-
         </Grid>
     </ScrollView>
 </ContentPage>
