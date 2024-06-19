@@ -13,7 +13,7 @@
                     <Setter Property="FontSize" Value="Small"/>
                     <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
                     <Setter Property="Margin" Value="10"/>
-                    <Setter Property="Padding" Value="15, 5"/>
+                    <Setter Property="Padding" Value="15, 0"/>
                 </Style>
                 <Style TargetType="Button">
                     <Setter Property="Margin" Value="10"/>
@@ -30,7 +30,14 @@
                 <Style TargetType="Entry">
                     <Setter Property="Margin" Value="10"/>
                 </Style>
-                
+                <Style TargetType="Frame">
+                    <Setter Property="CornerRadius" Value="5"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+
             </Grid.Resources>
 
             <!-- First Cell (Row 0, Column 0): title -->
@@ -49,8 +56,10 @@
 
             <Grid Grid.Row="1" Grid.Column="0"  >
                 <VerticalStackLayout>
+                    <Frame BackgroundColor="#1A4D2E">
                     <Label Text="Search"  WidthRequest="400"
                      FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                        </Frame>
                     <Picker x:Name="LivestockPicker"
                      Title="Select Livestock type" 
                      SelectedIndexChanged="OnLivestockTypeSelectionChange">
@@ -75,9 +84,13 @@
 
             <Grid Grid.Row="1" Grid.Column="1"  >
                 <VerticalStackLayout>
+                    <Frame BackgroundColor="#1A4D2E">
                     <Label Text="Result" WidthRequest="400"
                 FontSize="18" FontAttributes="Bold" BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                     </Frame>
+                    <Frame>
                     <Label x:Name="SearchResult" HeightRequest="200"/>
+                    </Frame>
                     <Image Source="logo_green.png" HeightRequest="100" WidthRequest="220"
                 HorizontalOptions="EndAndExpand" Margin="10" />
 

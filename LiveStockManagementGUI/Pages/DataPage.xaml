@@ -5,6 +5,7 @@
              xmlns:viewmodels="clr-namespace:LiveStockManagementGUI.ViewModels"
              x:Class="LiveStockManagementGUI.Pages.DataPage"
              Title="DataPage">
+    <ScrollView>
     <Border Margin ="40,40" 
             BackgroundColor= "#add7b1"
             StrokeShape="Rectangle 10">
@@ -20,13 +21,13 @@
                 </HorizontalStackLayout>
                 
             </Grid>
-            <Grid BackgroundColor="#1A4D2E" Margin="10,0" Padding="10,0" ColumnDefinitions="*,*,*,*,*,*"  >
-                <Label Grid.Column="0" Text="ID" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" />
-                <Label Grid.Column="1" Text="Name" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
-                <Label Grid.Column="2" Text="Colour" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
-                <Label Grid.Column="3" Text="Product " FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
-                <Label Grid.Column="4" Text="Weight (kg)" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
-                <Label Grid.Column="5" Text="Cost ($)" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5"/>
+            <Grid BackgroundColor="#1A4D2E" Margin="30,0" Padding="10,0" ColumnDefinitions="*,*,*,*,*,*"  >
+                <Label Grid.Column="0" Text="ID" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" FontSize="15"/>
+                <Label Grid.Column="1" Text="Name" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" FontSize="15"/>
+                <Label Grid.Column="2" Text="Colour" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" FontSize="15"/>
+                <Label Grid.Column="3" Text="Product " FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" FontSize="15"/>
+                <Label Grid.Column="4" Text="Weight (kg)" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" FontSize="15"/>
+                <Label Grid.Column="5" Text="Cost ($)" FontAttributes="Bold" TextColor="AntiqueWhite" Padding="5" FontSize="15"/>
             </Grid>
             <CollectionView 
             BackgroundColor= "#add7b1"
@@ -34,14 +35,14 @@
                 <CollectionView.ItemTemplate>
                 <DataTemplate>
                         <!--<Border BackgroundColor= "#add7b1" StrokeShape="Rectangle ">-->
-                        <Border BackgroundColor= "#e6f3e8" StrokeShape="Rectangle " Margin="10,0">
-                            <Grid ColumnDefinitions="*,*,*,*,*,*" Margin="10,0">
-                                <Label Grid.Column="1" Text="{Binding Name}" Padding="10,2"/>
-                                <Label Grid.Column="0" Text="{Binding Id}" FontAttributes="Bold" Padding="10,2" />
-                                <Label Grid.Column="2" Text="{Binding Colour}" Padding="10,2"/>
-                                <Label Grid.Column="3" Text="{Binding Milk}" Padding="10,2"/>
-                                <Label Grid.Column="4" Text="{Binding Weight}" Padding="10,2"/>
-                                <Label Grid.Column="5" Text="{Binding Cost}" Padding="10,2"/>
+                        <Border BackgroundColor= "#e6f3e8" StrokeShape="Rectangle " Margin="30,0" >
+                            <Grid ColumnDefinitions="*,*,*,*,*,*" Margin="10,0" >
+                                <Label Grid.Column="1" Text="{Binding Name}" Padding="10,5" FontSize="15"/>
+                                <Label Grid.Column="0" Text="{Binding Id}" FontAttributes="Bold" Padding="10,2" FontSize="15" />
+                                <Label Grid.Column="2" Text="{Binding Colour}" Padding="10,5" FontSize="15"/>
+                                <Label Grid.Column="3" Text="{Binding Milk}" Padding="10,5" FontSize="15"/>
+                                <Label Grid.Column="4" Text="{Binding Weight}" Padding="10,5" FontSize="15"/>
+                                <Label Grid.Column="5" Text="{Binding Cost}" Padding="10,5" FontSize="15"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -49,4 +50,5 @@
           </CollectionView>
         </StackLayout>
     </Border>
+    </ScrollView>
 </ContentPage>
