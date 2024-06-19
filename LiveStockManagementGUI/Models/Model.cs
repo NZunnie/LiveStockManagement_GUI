@@ -4,8 +4,8 @@ public class Livestock
 {
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; } //primary Key 
-    public virtual string? Name { get; set; }
-    public string? Colour { get; set; }
+    public virtual string ?Name { get; set; }
+    public string ?Colour { get; set; }
     public virtual double Milk { get; set; }
 
     public double Weight { get; set; }

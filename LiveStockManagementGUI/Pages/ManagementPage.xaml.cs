@@ -16,17 +16,11 @@ namespace LiveStockManagementGUI.Pages
         public ManagementPage(MainViewModel vm)
         {
             InitializeComponent();
-
-
             this.vm = vm;
             BindingContext = vm;
 
             _database = new Database(); // Initialize  database here
             LivestockPicker.ItemsSource = new string[] { "Insert", "Update", "Delete" };
-            //LivestockColour.ItemsSource = new string[] { "Black", "Red", "White", "All" };
-            //LivestockPicker.ItemsSource = new string[] { "Cow", "Sheep" };
-
-
         }
 
         private void OnLivestockTypeSelectionChange(object sender, EventArgs e)
@@ -55,7 +49,6 @@ namespace LiveStockManagementGUI.Pages
 
         }
 
-        //private void InsertBtn_Click(object sender, EventArgs e)
         private async void InsertBtn_Click(object sender, EventArgs e)
         {
             // Implement the logic for inserting a livestock record
@@ -149,6 +142,7 @@ namespace LiveStockManagementGUI.Pages
                 }
 
                 // Auto-populate the related fields for the selected id
+                
                 LivestockColour1.SelectedItem = existingLivestock.Colour;
                 Cost1.Text = existingLivestock.Cost.ToString();
                 Weight1.Text = existingLivestock.Weight.ToString();
@@ -159,7 +153,6 @@ namespace LiveStockManagementGUI.Pages
                 await DisplayAlert("Error", "Please enter a valid livestock ID first", "OK");
             }
         }
-        //private void UpdateBtn_Click(object sender, EventArgs e)
         private async void UpdateBtn_Click(object sender, EventArgs e)
         {
             // This will ensure the Id is valid
@@ -248,6 +241,7 @@ namespace LiveStockManagementGUI.Pages
                 }
 
                 // Auto-populate the related fields for the selected id
+                Type1.Text = existingLivestock.Name;
                 LivestockColour2.Text = existingLivestock.Colour;
                 Cost2.Text = existingLivestock.Cost.ToString();
                 Weight2.Text = existingLivestock.Weight.ToString();
@@ -263,8 +257,6 @@ namespace LiveStockManagementGUI.Pages
                 await DisplayAlert("Error", "Please enter a valid livestock ID first", "OK");
             }
         }
-
-        //private void DeleteBtn_Click(object sender, EventArgs e)
         private async void DeleteBtn_Click(object sender, EventArgs e)
         {
             // deleting a livestock record
@@ -322,6 +314,8 @@ namespace LiveStockManagementGUI.Pages
             Milk2.Text = string.Empty;
             Weight2.Text = string.Empty;
             LivestockColour2.Text = string.Empty;
+            Type1.Text = string.Empty;
+         
 
         }
     }

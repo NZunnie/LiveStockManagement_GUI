@@ -8,7 +8,7 @@
            Margin="0,20" 
            MaximumWidthRequest="400" 
            Spacing="5">
-        <Border BackgroundColor="#1A4D2E" StrokeShape="RoundRectangle 5">
+          <Border BackgroundColor="#1A4D2E" StrokeShape="RoundRectangle 5">
             <Grid Grid.Row="0" 
               Column="0" 
               ColumnSpan="2" 
@@ -20,7 +20,7 @@
                 FontSize="20" FontAttributes="Bold" TextColor="AntiqueWhite" BackgroundColor ="Transparent" Margin ="5,10" />
                 </HorizontalStackLayout>
             </Grid>
-        </Border>
+          </Border>
         <Picker x:Name="LivestockPicker"
            Title="Select Insert/Update/Delete function" 
            Grid.Row="1" Grid.Column="0"
@@ -52,13 +52,14 @@
                 </Picker.ItemsSource>
             </Picker>
             <Label Text="Enter Livestock Cost" />
-            <Entry x:Name="Cost" 
+              <Entry x:Name="Cost" 
                    Placeholder="Enter Livestock Cost" 
                    WidthRequest="400"                   
                    HorizontalOptions="Start"
                    BackgroundColor="AntiqueWhite"/>
+            
             <Label Text="Enter Livestock Weight" />
-            <Entry x:Name="Weight" 
+             <Entry x:Name="Weight" 
                    Placeholder="Enter Livestock Weight" 
                    WidthRequest="400" 
                    HorizontalOptions="Start"
@@ -76,33 +77,37 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
+            
             <Label Text="Enter Product" />
             <Entry x:Name="Milk" 
                    Placeholder="Enter Product" 
-                     WidthRequest="400" 
-                     HorizontalOptions="Start"
+                   WidthRequest="400" 
+                   HorizontalOptions="Start"
                    BackgroundColor="AntiqueWhite"/>
             <Button Text="Insert" Clicked="InsertBtn_Click"/>
         </StackLayout>
 
-        <StackLayout x:Name="UpdateLayout" IsVisible="False">
+        <StackLayout x:Name="UpdateLayout" IsVisible="False" Spacing="5">
             <Entry x:Name="UpdateLivestockId" 
                    Placeholder="Enter Livestock Id" 
                    BackgroundColor="AntiqueWhite"/>
-            <Button Text="Details" Clicked="DetailsBtn_Click" WidthRequest="400"/>
+                <Button Text="Details" Clicked="DetailsBtn_Click" WidthRequest="400"/>
+            
             <Label Text="Livestock Cost" HorizontalOptions="Start"/>
             <Entry x:Name="Cost1" 
                    Placeholder="Enter Livestock Cost" 
                    WidthRequest="400"
                    BackgroundColor="AntiqueWhite"/>
+            
             <Label Text="Livestock Weight" />
             <Entry x:Name="Weight1" 
                    Placeholder="Enter Livestock Weight" 
                    BackgroundColor="AntiqueWhite"/>
+            
             <Picker x:Name="LivestockColour1" 
-            Title="Select Livestock Colour (Black/Red/White)" 
-            BackgroundColor="#add7b1"
-            WidthRequest="400">
+                    Title="Select Livestock Colour (Black/Red/White)" 
+                    BackgroundColor="#add7b1"
+                    WidthRequest="400">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Black</x:String>
@@ -111,6 +116,7 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
+            
             <Label Text="Product" />
             <Entry x:Name="Milk1" 
                    Placeholder="Enter Product" 
@@ -118,36 +124,42 @@
             <Button Text="Update" Clicked="UpdateBtn_Click"/>
         </StackLayout>
 
-        <StackLayout x:Name="DeleteLayout" IsVisible="False">
+        <StackLayout x:Name="DeleteLayout" IsVisible="False" Spacing="3">
             <Label Text="Enter Livestock Id" />
-            <Entry x:Name="DeleteLivestockId" 
+                <Entry x:Name="DeleteLivestockId" 
                    Placeholder="Enter Livestock ID to Delete"
                    BackgroundColor="AntiqueWhite"/>
             <Button Text="Details" Clicked="DetailsBtn_Click1" WidthRequest="400"/>
-            
-            <Label Text="Livestock Cost" HorizontalOptions="Start"/>
-            <Entry x:Name="Cost2" IsReadOnly="True"
+
+            <Label Text="Livestock Type" HorizontalOptions="Start"/>
+                <Entry x:Name="Type1" IsReadOnly="True"
+                       Placeholder="Livestock Type" 
+                       WidthRequest="400"
+                       BackgroundColor="AntiqueWhite"/>
+                
+           <Label Text="Livestock Cost" HorizontalOptions="Start"/>
+                <Entry x:Name="Cost2" IsReadOnly="True"
                     Placeholder="Livestock Cost" 
                     WidthRequest="400"
                     BackgroundColor="AntiqueWhite"/>
             
-            <Label Text="Livestock Weight" />
-            <Entry x:Name="Weight2" IsReadOnly="True"
+           <Label Text="Livestock Weight" />
+                <Entry x:Name="Weight2" IsReadOnly="True"
                    Placeholder="Livestock Weight" 
                    BackgroundColor="AntiqueWhite"/>
             
-            <Label Text="Livestock Colour" HorizontalOptions="Start"/>
-            <Entry x:Name="LivestockColour2" IsReadOnly="True"
+          <Label Text="Livestock Colour" HorizontalOptions="Start"/>
+                <Entry x:Name="LivestockColour2" IsReadOnly="True"
                    Placeholder="Colour" 
                    WidthRequest="400"
                    BackgroundColor="AntiqueWhite"/>
 
 
-            <Label Text="Product"/>
-            <Entry x:Name="Milk2" IsReadOnly="True"
+          <Label Text="Product"/>
+               <Entry x:Name="Milk2" IsReadOnly="True"
                    Placeholder="Enter Product" 
                    BackgroundColor="AntiqueWhite"/>
-            <Button Text="Delete" 
+               <Button Text="Delete" 
                     Clicked="DeleteBtn_Click"/>
         </StackLayout>
         <Grid>

@@ -76,16 +76,11 @@
                 <VerticalStackLayout>
                 <Frame BackgroundColor="#1A4D2E">
                     <Label Text="Live Stock Management" 
-                           FontSize="20" 
-                           FontAttributes="Bold"  
-                           HorizontalTextAlignment="Center"
-                           WidthRequest="300"   
-                           BackgroundColor="#1A4D2E"
-                           TextColor="AntiqueWhite"/>
-                </Frame>
-                    <Image Source="report_logo.png" 
-                           HeightRequest="210" 
-                           WidthRequest="210" />
+                       FontSize="20" FontAttributes="Bold"  HorizontalTextAlignment="Center"
+                       WidthRequest="300"   
+                       BackgroundColor="#1A4D2E" TextColor="AntiqueWhite"/>
+                    <Image Source="report_logo.png" HeightRequest="210" WidthRequest="210" />
+
                 </VerticalStackLayout>
             </Grid>
 
