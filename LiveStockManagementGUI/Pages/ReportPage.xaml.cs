@@ -5,7 +5,7 @@ public partial class ReportPage : ContentPage
 	MainViewModel vm;
 	public ReportPage(MainViewModel vm)
 	{
-		InitializeComponent();
+        InitializeComponent();
         vm = new MainViewModel();
 
         this.vm = vm;
